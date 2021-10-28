@@ -75,6 +75,8 @@ public class HomeFragment extends Fragment {
         TextView UserType=mView.findViewById(R.id.textView_UserType_HomePage);
         UserName.setText(InitUserDataUtil.GetUserNickName());
         UserType.setText(InitUserDataUtil.GetUserType());
+        TextView PageName=mView.findViewById(R.id.textview_toolbar);
+        PageName.setText("主页");
         return   mView;
     }
 }

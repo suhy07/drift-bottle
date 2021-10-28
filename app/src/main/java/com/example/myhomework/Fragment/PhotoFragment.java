@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myhomework.Activity.MainActivity;
@@ -215,7 +216,8 @@ public class PhotoFragment extends Fragment {
                 }
             }
         });
-
+        TextView PageName=view.findViewById(R.id.textview_toolbar);
+        PageName.setText("随手拍");
         return view;
     }
 

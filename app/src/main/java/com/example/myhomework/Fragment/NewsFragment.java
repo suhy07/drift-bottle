@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myhomework.Adapter.NewItemAdapter;
 import com.example.myhomework.R;
@@ -71,6 +72,8 @@ public class NewsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));  //设置为竖直向下
         NewItemAdapter newItemAdapter = new NewItemAdapter(getActivity());
         recyclerView.setAdapter(newItemAdapter);
+        TextView PageName=mview.findViewById(R.id.textview_toolbar);
+        PageName.setText("新闻");
         return mview;
     }
 }
