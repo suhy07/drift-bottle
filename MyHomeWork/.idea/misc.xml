@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/layout/fragment_chat2.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_photo.xml" value="0.10520833333333333" />
       </map>
     </option>
   </component>
