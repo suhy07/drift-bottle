@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.myhomework.R;
+import com.example.myhomework.Util.SaveIdPasswordUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         ////////////读取账户密码
-        Map<String,String> userInfo=Save_Id_Password.getUserInfo(this);
+        Map<String,String> userInfo= SaveIdPasswordUtil.getUserInfo(this);
         userID.setText(userInfo.get("account"));
         userPassWord.setText(userInfo.get("password"));
         Toast.makeText(this,"读取成功",Toast.LENGTH_LONG).show();
@@ -156,11 +157,11 @@ public class LoginActivity extends AppCompatActivity {
             return LOGINFAULT;
         } else if (code==200) {
             if(chBOX.isChecked()){
-                boolean isSaveSuccess=Save_Id_Password.saveUserInfo(this,name,password);
+                boolean isSaveSuccess=SaveIdPasswordUtil.saveUserInfo(this,name,password);
                 Toast.makeText(this,"保存成功",Toast.LENGTH_LONG).show();
             }
             else{
-                Save_Id_Password.delectUserInfo(this);
+                SaveIdPasswordUtil.delectUserInfo(this);
                 Toast.makeText(this,"账号密码未保存",Toast.LENGTH_LONG).show();
             }
             return LOGINSUCCESS;

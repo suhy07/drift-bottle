@@ -1,4 +1,4 @@
-package com.example.myhomework.Activity;
+package com.example.myhomework.Util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Save_Id_Password {
+public class SaveIdPasswordUtil {
 
     //保存账号密码到data.xml
     public static boolean saveUserInfo(Context context, String account, String password){

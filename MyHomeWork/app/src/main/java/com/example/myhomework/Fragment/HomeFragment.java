@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.myhomework.Activity.MainActivity;
 import com.example.myhomework.R;
 import com.example.myhomework.Util.InitUserDataUtil;
 
@@ -73,10 +75,15 @@ public class HomeFragment extends Fragment {
         ImageView state=  mView.findViewById(R.id.imageView_State_toolbar);
         TextView UserName=mView.findViewById(R.id.textView_UserName_HomePage);
         TextView UserType=mView.findViewById(R.id.textView_UserType_HomePage);
+        TextView PageName=mView.findViewById(R.id.textview_toolbar);
+
+
         UserName.setText(InitUserDataUtil.GetUserNickName());
         UserType.setText(InitUserDataUtil.GetUserType());
-        TextView PageName=mView.findViewById(R.id.textview_toolbar);
         PageName.setText("主页");
+
+        userhead.setOnClickListener(v -> MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
+
         return   mView;
     }
 }

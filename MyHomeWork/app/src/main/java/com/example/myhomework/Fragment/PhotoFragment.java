@@ -23,10 +23,12 @@ import androidx.fragment.app.Fragment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -218,6 +220,10 @@ public class PhotoFragment extends Fragment {
         });
         TextView PageName=view.findViewById(R.id.textview_toolbar);
         PageName.setText("随手拍");
+        ImageButton userhead=  view.findViewById(R.id.imageButton_UserHead_toolbar);
+
+        userhead.setOnClickListener(v -> MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
+
         return view;
     }
 

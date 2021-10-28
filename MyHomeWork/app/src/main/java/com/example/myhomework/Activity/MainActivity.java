@@ -2,6 +2,7 @@ package com.example.myhomework.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
+    public static DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         InitUserDataUtil.ResetUserData(binding.getRoot(),this);
         BottomNavigationView navView = binding.navView;
+        drawerLayout=binding.drawerLayout;
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.page_news, R.id.page_photo,R.id.page_home)
                 .build();
