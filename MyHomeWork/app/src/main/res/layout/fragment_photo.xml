@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> f7f407621684a31c74647505bdf5aa0af49fbda5
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,6 +13,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+<<<<<<< HEAD
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
@@ -63,11 +69,80 @@
             android:layout_width="174dp"
             android:layout_height="184dp"
             android:background="#00FFFFFF"
+=======
+    <include
+        layout="@layout/appbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:Text="占位Padding" />
+
+    <Button
+        android:id="@+id/choose_from_album"
+        android:layout_width="172dp"
+        android:layout_height="129dp"
+        android:background="#FFFFFF"
+        android:drawableTop="@drawable/camera"
+        android:text="相册选择"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.852" />
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="413dp"
+        android:layout_height="239dp"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101"
+        app:srcCompat="@drawable/shool_view" />
+
+    <Button
+        android:id="@+id/take_photo"
+        android:layout_width="148dp"
+        android:layout_height="151dp"
+        android:background="#FFFFFF"
+        android:drawableTop="@drawable/camera"
+        android:text="随手拍"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591" />
+
+    <Button
+            android:id="@+id/button3"
+            android:layout_width="122dp"
+            android:layout_height="178dp"
+            android:background="@color/white"
+>>>>>>> f7f407621684a31c74647505bdf5aa0af49fbda5
             android:drawableTop="@drawable/history"
             android:text="历史记录"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
             app:layout_constraintHorizontal_bias="0.89"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -75,3 +150,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
+=======
+            app:layout_constraintHorizontal_bias="0.823"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.655" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> f7f407621684a31c74647505bdf5aa0af49fbda5
