@@ -41,5 +41,4 @@ public class SaveIdPasswordUtil {
         Log.d("test",str);*/
         return  UserMap;
     }
-
 }

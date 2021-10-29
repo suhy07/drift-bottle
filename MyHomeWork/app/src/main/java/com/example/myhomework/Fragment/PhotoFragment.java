@@ -175,11 +175,6 @@ public class PhotoFragment extends Fragment {
                 // 创建File对象，用于存储拍照后的图片
                 File outputImage = new File(view.getContext().getExternalCacheDir(), "output_image.jpg");
                 try {
-                    String imgSaved= MediaStore.Images.Media.insertImage(view.getContext().getContentResolver(),outputImage.getAbsolutePath(), UUID.randomUUID().toString()+".png", "drawing");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                try {
                     if (outputImage.exists()) {
                         outputImage.delete();
                     }
