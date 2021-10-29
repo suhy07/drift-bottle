@@ -18,9 +18,10 @@ import okhttp3.Response;
 public class HttpUtil {
 
     private static void HttpUtil(){}
-    public static void Post_file(String url,String filename,String pathname){
+    public static String Post_file(String url,String filename,String pathname){
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
+        String str="";
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file",filename,
@@ -33,9 +34,11 @@ public class HttpUtil {
                     .method("POST", body)
                     .build();
             Response response = client.newCall(request).execute();
+            str=response.toString();
         }catch (Exception e){
             System.out.println(e);
         }
+        return str;
     }
 
     public static Bitmap getURLimage(String url) {
