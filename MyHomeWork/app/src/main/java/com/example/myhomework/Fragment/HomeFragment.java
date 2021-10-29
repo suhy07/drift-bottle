@@ -1,11 +1,13 @@
 package com.example.myhomework.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -34,7 +36,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private View mView;
+    private View mview;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -70,20 +72,44 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView=inflater.inflate(R.layout.fragment_home, container, false);
-        ImageButton userhead=  mView.findViewById(R.id.imageButton_UserHead_toolbar);
-        ImageView state=  mView.findViewById(R.id.imageView_State_toolbar);
-        TextView UserName=mView.findViewById(R.id.textView_UserName_HomePage);
-        TextView UserType=mView.findViewById(R.id.textView_UserType_HomePage);
-        TextView PageName=mView.findViewById(R.id.textview_toolbar);
+        mview=inflater.inflate(R.layout.fragment_home, container, false);
+        ImageButton userhead=  mview.findViewById(R.id.imageButton_UserHead_toolbar);
+        ImageButton useritem=mview.findViewById(R.id.imageButton_UserItem_HomePage);
+        ImageButton usermessage=mview.findViewById(R.id.imageButton_Message_HomePage);
+        ImageButton contact=mview.findViewById(R.id.imageButton_Contact_HomePage);
+        ImageButton settle=mview.findViewById(R.id.imageButton_Settle_HomePage);
+
+        ImageView state=  mview.findViewById(R.id.imageView_State_toolbar);
+        TextView username=mview.findViewById(R.id.textView_UserName_HomePage);
+        TextView usertype=mview.findViewById(R.id.textView_UserType_HomePage);
+        TextView pagename=mview.findViewById(R.id.textview_toolbar);
 
 
-        UserName.setText(InitUserDataUtil.GetUserNickName());
-        UserType.setText(InitUserDataUtil.GetUserType());
-        PageName.setText("主页");
+        username.setText(InitUserDataUtil.GetUserNickName());
+        usertype.setText(InitUserDataUtil.GetUserType());
+        pagename.setText("主页");
 
         userhead.setOnClickListener(v -> MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
+        useritem.setOnTouchListener(new ImageButtonOuTouchView(useritem));
+        usermessage.setOnTouchListener(new ImageButtonOuTouchView(usermessage));
+        contact.setOnTouchListener(new ImageButtonOuTouchView(contact));
+        settle.setOnTouchListener(new ImageButtonOuTouchView(settle));
 
-        return   mView;
+        return   mview;
+    }
+    private class ImageButtonOuTouchView implements View.OnTouchListener {
+
+        ImageButton imageButton;
+        public ImageButtonOuTouchView(ImageButton imageButton){this.imageButton=imageButton;}
+
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                imageButton.setBackgroundColor(Color.GRAY);
+            }else if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                imageButton.setBackgroundColor(Color.WHITE);
+            }
+            return false;
+        }
     }
 }

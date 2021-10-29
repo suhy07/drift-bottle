@@ -46,11 +46,11 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.MyViewHo
         TextView title;
         TextView introduce;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            iv = itemView.findViewById(R.id.imageView);
-            title = itemView.findViewById(R.id.newsTitle);
-            introduce = itemView.findViewById(R.id.newsContent);
+        public MyViewHolder(@NonNull View itemview) {
+            super(itemview);
+            iv = itemview.findViewById(R.id.imageView);
+            title = itemview.findViewById(R.id.newsTitle);
+            introduce = itemview.findViewById(R.id.newsContent);
         }
     }
 }

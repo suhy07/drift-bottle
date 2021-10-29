@@ -56,6 +56,7 @@
         <entry key="app/src/main/res/layout/fragment_photo.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/layout/fragment_settle_user_data.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/layout/homepage1.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/recycler_item.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/layout/userhead_item.xml" value="0.10520833333333333" />
       </map>
     </option>

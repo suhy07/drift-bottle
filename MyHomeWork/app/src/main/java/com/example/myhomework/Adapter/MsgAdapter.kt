@@ -20,7 +20,7 @@ class MsgAdapter(val msgList:List<Msg>):RecyclerView.Adapter<RecyclerView.ViewHo
         val leftMsg:TextView = view.findViewById(R.id.leftText)
     }
     //获取消息类型(左或者右),返回到onCreateViewHolder()方法的viewType参数里面
-    override fun getItemViewType(position: Int): Int {
+    fun getItemviewType(position: Int): Int {
         val msg = msgList[position] //根据当前数据源的元素类型
         return msg.type
     }
