@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        InitUserDataUtil.ResetUserData(binding.getRoot(),this);
+        //InitUserDataUtil.ResetUserData(binding.getRoot(),this);
 
         BottomNavigationView navView = binding.navView;
         drawerLayout=binding.drawerLayout;

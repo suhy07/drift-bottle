@@ -26,22 +26,22 @@ import java.util.Stack;
 
 
 public class InitUserDataUtil {
-    private static InitUserDataUtil initUserDataUtil=new InitUserDataUtil();
+    public static InitUserDataUtil initUserDataUtil=new InitUserDataUtil();
     private static String uid;
     private static String userNickName;
     private static UserType userType;
-    private static void InitUserDataUtil() {
+    private InitUserDataUtil() {
     }
-    public static InitUserDataUtil GetInitUserDataUtil(){
-
+    private static InitUserDataUtil GetInitUserDataUtil(){
         return initUserDataUtil;
     }
     public static void ResetUserData(View view,Activity activity){
+        /*
         NodeList list=null;
         FileInputStream fileInputStream=null;
-        /*
-        test to save userdata
-        */
+        //
+        //test to save userdata
+        //
         String str="<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
                 "<userlist>\n" +
                 "    <user>\n" +
@@ -51,9 +51,9 @@ public class InitUserDataUtil {
                 "    </user>\n" +
                 "</userlist>";
         temp_save(str,activity);
-        /*
-        test to save userdata
-        */
+        //
+        //test to save userdata
+        //
         try {
             fileInputStream=activity.openFileInput("data.xml");
             list=ReadXmlUtil.GetdNodeLise(fileInputStream,"user" );
@@ -89,7 +89,8 @@ public class InitUserDataUtil {
                     }
                 }
             }
-        }
+        }*/
+
         Toast.makeText(view.getContext(),"uid:"+uid,Toast.LENGTH_LONG).show();
         Toast.makeText(view.getContext(),"userNickName:"+userNickName,Toast.LENGTH_LONG).show();
         Toast.makeText(view.getContext(),"userType:"+userType,Toast.LENGTH_LONG).show();
@@ -104,6 +105,7 @@ public class InitUserDataUtil {
         return userType.typeStr;
     }
     private void SetHead(){ }
+
     private static void temp_save(String str,Activity activity){
         FileOutputStream out=null;
         BufferedWriter writer=null;
@@ -122,30 +124,6 @@ public class InitUserDataUtil {
                 e.printStackTrace();
             }
         }
-    }
-    private static String load(Activity activity){
-        FileInputStream in=null;
-        BufferedReader reader=null;
-        StringBuffer content=new StringBuffer();
-        try{
-            in=activity.openFileInput("data.xml");
-            reader=new BufferedReader(new InputStreamReader(in));
-            String line="";
-            while((line=reader.readLine())!=null){
-                content.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if(reader!=null){
-                try{
-                    reader.close();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-        return content.toString();
     }
     protected enum UserType{
         Normal("普通用户",1),Admin("管理员",2);
