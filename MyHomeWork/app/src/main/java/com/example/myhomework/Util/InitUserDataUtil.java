@@ -18,6 +18,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -90,7 +94,22 @@ public class InitUserDataUtil {
                 }
             }
         }*/
-
+        Connection connection=JDBCUtil.Connection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String ss = new String("SELECT * from user;");
+        try {
+            preparedStatement = connection.prepareStatement(ss);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                uid=resultSet.getString("uid");
+                userNickName=resultSet.getString("userNickName");
+                userType=UserType.InitFromStr(resultSet.getString("userType"));
+            }
+        } catch (SQLException e) {
+        } finally {
+           JDBCUtil.closeAll(resultSet,preparedStatement,connection);
+        }
         Toast.makeText(view.getContext(),"uid:"+uid,Toast.LENGTH_LONG).show();
         Toast.makeText(view.getContext(),"userNickName:"+userNickName,Toast.LENGTH_LONG).show();
         Toast.makeText(view.getContext(),"userType:"+userType,Toast.LENGTH_LONG).show();
@@ -104,7 +123,9 @@ public class InitUserDataUtil {
     public static String GetUserType(){
         return userType.typeStr;
     }
-    private void SetHead(){ }
+    private void SetHead(){
+        //HttpUtil.getURLimage()
+    }
 
     private static void temp_save(String str,Activity activity){
         FileOutputStream out=null;

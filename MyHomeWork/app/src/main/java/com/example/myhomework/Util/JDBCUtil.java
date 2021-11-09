@@ -1,36 +1,44 @@
 package com.example.myhomework.Util;
 
+import android.util.Log;
+
+import com.example.myhomework.Global.GlobalMemory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class JDBCUtil {
     public static JDBCUtil jdbcUtil=new JDBCUtil();
-    public static Connection connection;
+    private static  String url = "jdbc:mysql://47.98.173.217:3306/schoolphoto";
+    private static String MysqlUser = "schoolphoto";
+    private static String MysqlPassword = "Photo@123zxc";
     private JDBCUtil(){
+        Connection();
     }
 
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        closeAll();
     }
 
-    private void Connection() {
-        Connection connection = null;
-        try {
-            String SDdriver = "com.mysql.jdbc.Driver";
-            String SDurl = "jdbc:mysql://localhost:3306/emsdb?characterEncoding=utf8&useSSL=true";
-            //emsdb替换成自己的数据库名称
-            String SDuser = "root";
-            String SDpassword = "123456";
-            Class.forName(SDdriver);
-            connection = DriverManager.getConnection(SDurl, SDuser, SDpassword);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static Connection Connection() {
+        Connection connection=null;
+       // String url = "jdbc:mysql://47.98.173.217:3306/schoolphoto";
+            try {
+                String SDdriver = "com.mysql.jdbc.Driver";
+                Class.forName(SDdriver);
+                Log.d("ttt", url);
+                connection=DriverManager.getConnection(url, MysqlUser, MysqlPassword);
+            } catch (Exception e) {
+                Log.d("ttt", e.toString());
+                e.printStackTrace();
+            }
+
+        return connection;
+        /*
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String ss = new String("SELECT * from employer;");
@@ -43,12 +51,11 @@ public class JDBCUtil {
         } catch (SQLException ex) {
         } finally {
             closeAll(connection, preparedStatement, resultSet);
-        }
+        }*/
     }
 
-    public static void closeAll(Connection connection, PreparedStatement preparedStatement,ResultSet resultSet) {
+    public static void closeAll(ResultSet resultSet,PreparedStatement preparedStatement,Connection connection) {
         try {
-    //按顺序关闭
             if(resultSet!=null) {
                 resultSet.close();
             }
