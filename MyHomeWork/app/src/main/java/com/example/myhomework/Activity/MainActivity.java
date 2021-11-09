@@ -42,17 +42,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     private ActivityMainBinding binding;
     public static DrawerLayout drawerLayout;
+    public static MainActivity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        mainActivity=this;
         setContentView(binding.getRoot());
-        InitUserDataUtil.ResetUserData(binding.getRoot(),this);
-
+        InitUserDataUtil.ResetUserData();
         BottomNavigationView navView = binding.navView;
         drawerLayout=binding.drawerLayout;
         NavigationView navigationView=binding.navigationView;
@@ -66,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
         verifyStoragePermissions(this);
 
-        //Bitmap pngBM=getURLimage("http://47.98.173.217:8080/downloadFile/app_icon.png");
-        //circleImageView.setImageBitmap(pngBM);
+        //Bitmap pngBM=getURLimage("http://47.98.173.217:8080");
+        circleImageView.setImageBitmap(InitUserDataUtil.userHeadBitmap);
         //imageView.setImageBitmap(pngBM);
 
     }

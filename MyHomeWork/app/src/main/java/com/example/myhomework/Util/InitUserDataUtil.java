@@ -3,11 +3,16 @@ package com.example.myhomework.Util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.myhomework.Activity.MainActivity;
+import com.example.myhomework.Global.GlobalMemory;
 
 import org.w3c.dom.*;
 
@@ -34,85 +39,33 @@ public class InitUserDataUtil {
     private static String uid;
     private static String userNickName;
     private static UserType userType;
+    public static Bitmap userHeadBitmap;
     private InitUserDataUtil() {
     }
     private static InitUserDataUtil GetInitUserDataUtil(){
         return initUserDataUtil;
     }
-    public static void ResetUserData(View view,Activity activity){
-        /*
-        NodeList list=null;
-        FileInputStream fileInputStream=null;
-        //
-        //test to save userdata
-        //
-        String str="<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
-                "<userlist>\n" +
-                "    <user>\n" +
-                "        <uid>221900122</uid>\n" +
-                "        <NicknName>测试用户</NicknName>\n" +
-                "        <Type>普通用户</Type>\n" +
-                "    </user>\n" +
-                "</userlist>";
-        temp_save(str,activity);
-        //
-        //test to save userdata
-        //
-        try {
-            fileInputStream=activity.openFileInput("data.xml");
-            list=ReadXmlUtil.GetdNodeLise(fileInputStream,"user" );
-        }catch (IOException e){
-            e.printStackTrace();
-        }finally {
-            if(fileInputStream!=null)
-                try {
-                    fileInputStream.close();
-                }catch (IOException e){
-                    e.printStackTrace();
+    public static void ResetUserData(){
+
+        new Thread(() -> {
+            PreparedStatement preparedStatement = null;
+            ResultSet resultSet = null;
+            Connection connection =JDBCUtil.Connection();
+            String sql = "SELECT * from user;";
+            try {
+                preparedStatement = connection.prepareStatement(sql);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    uid=resultSet.getString("uid");
+                    userNickName=resultSet.getString("userNickName");
+                    userType=UserType.InitFromStr(resultSet.getString("userType"));
                 }
-        }
-        if(list!=null) {
-            for (int i = 0; i < list.getLength(); i++) {
-                Element element = (Element) list.item(i);
-                NodeList childNodes = element.getChildNodes();
-                for (int j = 0; j < childNodes.getLength(); j++) {
-                    if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
-                        //TODO 设置uid检测
-                        //获取节点
-                        switch (childNodes.item(j).getNodeName()) {
-                            case "uid":
-                                uid = childNodes.item(j).getFirstChild().getNodeValue();
-                                break;
-                            case "NicknName":
-                                userNickName = childNodes.item(j).getFirstChild().getNodeValue();
-                                break;
-                            case "Type":
-                                userType=UserType.InitFromStr(childNodes.item(j).getFirstChild().getNodeValue());
-                                break;
-                        }
-                    }
-                }
+            } catch (SQLException e) {
+            } finally {
+                JDBCUtil.closeAll(resultSet,preparedStatement,connection);
             }
-        }*/
-        Connection connection=JDBCUtil.Connection();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        String ss = new String("SELECT * from user;");
-        try {
-            preparedStatement = connection.prepareStatement(ss);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                uid=resultSet.getString("uid");
-                userNickName=resultSet.getString("userNickName");
-                userType=UserType.InitFromStr(resultSet.getString("userType"));
-            }
-        } catch (SQLException e) {
-        } finally {
-           JDBCUtil.closeAll(resultSet,preparedStatement,connection);
-        }
-        Toast.makeText(view.getContext(),"uid:"+uid,Toast.LENGTH_LONG).show();
-        Toast.makeText(view.getContext(),"userNickName:"+userNickName,Toast.LENGTH_LONG).show();
-        Toast.makeText(view.getContext(),"userType:"+userType,Toast.LENGTH_LONG).show();
+        }).start();
+        GetUserHead();
     }
     public static String GetUid(){
         return uid;
@@ -123,28 +76,8 @@ public class InitUserDataUtil {
     public static String GetUserType(){
         return userType.typeStr;
     }
-    private void SetHead(){
-        //HttpUtil.getURLimage()
-    }
-
-    private static void temp_save(String str,Activity activity){
-        FileOutputStream out=null;
-        BufferedWriter writer=null;
-        try{
-            out=activity.openFileOutput("data.xml", Context.MODE_PRIVATE);
-            writer=new BufferedWriter(new OutputStreamWriter(out));
-            writer.write(str);
-        }catch (IOException e){
-            e.printStackTrace();
-        }finally {
-            try{
-                if(writer!=null){
-                    writer.close();
-                }
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        }
+    public static void GetUserHead(){
+        userHeadBitmap=HttpUtil.getURLimage(GlobalMemory.FileServerUri+"/downloadFile/app_icon.png");
     }
     protected enum UserType{
         Normal("普通用户",1),Admin("管理员",2);
