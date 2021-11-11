@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.26481481481481484" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/drawable/shape_circle.xml" value="0.23125" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/drawable/userdata.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/activity_main2.xml" value="0.15172101449275363" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/appbar.xml" value="0.4" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/appbar2.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/content_login.xml" value="0.16510416666666666" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/drawer_header.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fg1.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_blank.xml" value="0.1359375" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_dashboard.xml" value="0.1328125" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_first.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_login.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_news.xml" value="0.152" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_notifications.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_photo.xml" value="0.25" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_second.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/fragment_settle_user_data.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/homepage1.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/recycler_item.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/temp.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/layout/userinformation.xml" value="0.2" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/menu/menu_drawer.xml" value="0.6" />
+        <entry key="..\:/Users/suhy/Desktop/Android/MyHomeWork/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/drawer_header.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/fragment_chat.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/fragment_news.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/fragment_photo.xml" value="0.16964285714285715" />
+        <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/userhead_item.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/layout/activity_login.xml" value="0.1096757852077001" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/layout/fragment_chat.xml" value="0.2" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/layout/msg_left_layout.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/layout/msg_right_layout.xml" value="0.16" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/suhy/OneDrive/Android/MyHomeWork/app/src/main/res/menu/menu_drawer.xml" value="0.2109375" />
+        <entry key="..\:/github/schoolphoto-android/MyHomeWork/app/src/main/res/layout/activity_login.xml" value="0.1875" />
+        <entry key="..\:/github/schoolphoto-android/MyHomeWork/app/src/main/res/layout/activity_update_photo.xml" value="0.1" />
+        <entry key="..\:/github/schoolphoto-android/MyHomeWork/app/src/main/res/layout/fragment_photo.xml" value="0.16354166666666667" />
+        <entry key="..\:/myhomework/schoolphoto-android/MyHomeWork/app/src/main/res/layout/activity_update_photo.xml" value="0.1" />
+        <entry key="..\:/myhomework/schoolphoto-android/MyHomeWork/app/src/main/res/layout/fragment_photo.xml" value="0.1816123188405797" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26273817779105657" />
+        <entry key="app/src/main/res/layout/appbar.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.18015188854401235" />
+        <entry key="app/src/main/res/layout/fragment_chat2.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_news.xml" value="0.1585317126329482" />
+        <entry key="app/src/main/res/layout/fragment_photo.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_settle_user_data.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/homepage1.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/recycler_item.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/userhead_item.xml" value="0.10520833333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
