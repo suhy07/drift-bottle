@@ -1,10 +1,13 @@
 package com.example.myhomework.Fragment;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -21,6 +24,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -42,6 +46,7 @@ import com.example.myhomework.Util.PhotoUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -101,7 +106,6 @@ public class PhotoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view=inflater.inflate(R.layout.fragment_photo, container, false);
         Button takePhoto = view.findViewById(R.id.take_photo);
         Button chooseFromAlbum = view.findViewById(R.id.choose_from_album);
@@ -111,8 +115,8 @@ public class PhotoFragment extends Fragment {
 
         takePhoto.setOnClickListener(v -> {
             // 创建File对象，用于存储拍照后的图片
-            String filename= UUID.randomUUID().toString();
-            File outputImage = new File(view.getContext().getExternalCacheDir(),filename);
+            MainActivity.filename= UUID.randomUUID().toString();
+            File outputImage = new File(view.getContext().getExternalCacheDir(),MainActivity.filename);
             try {
                 if (outputImage.exists()) {
                     outputImage.delete();
@@ -131,13 +135,16 @@ public class PhotoFragment extends Fragment {
                         view.getContext().getPackageName() + ".fileprovider",
                         outputImage);
             }
+            MainActivity.picuri=imageUri;
             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
             intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
             startActivityForResult(intent,1);
-
         });
 
+
+
         chooseFromAlbum.setOnClickListener(v-> {
+
             Intent intent =new Intent();
             intent.setClass(view.getContext(),UpdatePhotoActivity.class);
             startActivityForResult(intent,2);
@@ -148,7 +155,6 @@ public class PhotoFragment extends Fragment {
         PageName.setText("随手拍");
         ImageButton userhead=  view.findViewById(R.id.imageButton_UserHead_toolbar);
         userhead.setOnClickListener(v -> MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
-
         return view;
     }
 

@@ -18,9 +18,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -34,6 +36,8 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -73,21 +77,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public static Uri picuri;
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public static String filename;
 
-        ImageView imageView=findViewById(R.id.picture);
-        if(requestCode==2){
-            if(data!=null){
-                Uri uri=data.getData();
-                String path= PhotoUtil.handleImageOnKitKat(data,this);
-                File file=new File(path);
-                HttpUtil.Post_file("http://47.98.173.217:8080/uploadFile",file.getName(),file.getPath());
-                Toast.makeText(this,data.getData().toString(),Toast.LENGTH_LONG).show();
-                picuri=uri;
-            }
-        }
+    @Override
+    protected  void  onActivityResult(int  requestCode,  int  resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bitmap= null;
+        try {
+            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(picuri));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        //存入相册
+        MediaStore.Images.Media.insertImage(this.getContentResolver(),
+                bitmap, filename, null);
     }
+
+
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE={
             "android.permission.READ_EXTERNAL_STORAGE",

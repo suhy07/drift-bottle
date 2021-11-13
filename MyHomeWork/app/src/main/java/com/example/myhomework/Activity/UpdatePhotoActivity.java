@@ -3,12 +3,17 @@ package com.example.myhomework.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -22,6 +27,7 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +48,8 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.List;
 
@@ -49,7 +57,7 @@ public class UpdatePhotoActivity extends AppCompatActivity {
     private MapView mMapView ;
     BaiduMap mBaiduMap;
     LocationClient mLocationClient;
-
+    private ImageView imageview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,15 +67,19 @@ public class UpdatePhotoActivity extends AppCompatActivity {
 
         ImageView imageView;
         imageView = findViewById(R.id.picture);
-
+        Toast.makeText(this, "onCreate", Toast.LENGTH_LONG).show();
         imageView.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                String imagePath=PhotoUtil.openAlbum(UpdatePhotoActivity.this);
-                imageView.setImageURI(MainActivity.picuri);
-                Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
-                imageView.setImageBitmap(bitmap);
+                if (ContextCompat.checkSelfPermission(UpdatePhotoActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+                    ActivityCompat.requestPermissions(UpdatePhotoActivity.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            1);
+                } else {
+                    openAlbum();
+                }
             }
         });
 
@@ -84,6 +96,30 @@ public class UpdatePhotoActivity extends AppCompatActivity {
         init_location();
 
 
+    }
+
+
+    //图片
+    private void openAlbum(){
+        Toast.makeText(this,"openAlbum",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+        intent.setType("image/*");
+        startActivityForResult(intent,2);//打开相册
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults){
+
+        switch (requestCode){
+            case 1:
+                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    openAlbum();
+                    //Toast.makeText(this,"onRequestPermissionsResult",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(this,"你拒绝了许可",Toast.LENGTH_LONG).show();
+                }
+                break;
+            default:
+        }
     }
 
     @Override
@@ -185,6 +221,62 @@ public class UpdatePhotoActivity extends AppCompatActivity {
         mLocationClient.start();
     }
 
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data) {
 
+        Toast.makeText(this,"onActivityResult",Toast.LENGTH_LONG).show();
+
+        switch (requestCode) {
+            case 2:
+                Toast.makeText(this,"RESULT_OK",Toast.LENGTH_LONG).show();
+                if (Build.VERSION.SDK_INT >= 19) {
+                    Uri uri=data.getData();
+                    Toast.makeText(this,""+uri,Toast.LENGTH_LONG).show();
+
+                    this.imageview=findViewById(R.id.picture);
+                    this.imageview.setImageURI(uri);
+                } else {
+                    handleImageBeforeKitKat(data);
+                    Toast.makeText(this,"4.4以下",Toast.LENGTH_LONG).show();
+                }
+                //}
+                break;
+            default:
+                break;
+
+        }
+
+    }
+    @TargetApi(19)
+    private void handleImageBeforeKitKat(Intent data){
+        Uri uri = data.getData();
+        String imagePath = getImagePath(uri,null);
+        displayImage(imagePath);
+    }
+
+    private  String getImagePath(Uri uri,String selection){
+        String path =null;
+        Cursor cursor =getContentResolver().query(uri,null,selection,null,null);
+        if(cursor!=null){
+            if(cursor.moveToFirst()){
+                path=cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            }
+            cursor.close();
+        }
+        //Toast.makeText(this,"图片地址"+path,Toast.LENGTH_LONG).show();
+        return path;
+    }
+
+    private  void displayImage(String imagePath){
+        if(imagePath!=null){
+
+            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+            this.imageview=findViewById(R.id.picture);
+            this.imageview.setImageBitmap(bitmap);
+        }else {
+            Toast.makeText(this,"未能获得图像",Toast.LENGTH_LONG).show();
+        }
+    }
 
 }

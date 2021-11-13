@@ -16,12 +16,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
+import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.myhomework.Activity.MainActivity;
 import com.example.myhomework.Activity.UpdatePhotoActivity;
+import com.example.myhomework.R;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -70,9 +73,6 @@ public class PhotoUtil {
             // 如果是file类型的Uri，直接获取图片路径即可
             imagePath = uri.getPath();
         }
-
-
-       System.out.println(imagePath); // 根据图片路径显示图片
         return imagePath;
     }
 
