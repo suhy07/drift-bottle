@@ -18,9 +18,7 @@ import android.widget.TextView;
 
 import com.example.myhomework.Activity.MainActivity;
 import com.example.myhomework.R;
-import com.example.myhomework.Util.InitUserDataUtil;
-
-import java.util.List;
+import com.example.myhomework.Service.UserService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,10 +85,10 @@ public class HomeFragment extends Fragment {
         TextView usertype=mview.findViewById(R.id.textView_UserType_HomePage);
         TextView pagename=mview.findViewById(R.id.textview_toolbar);
 
-        userHead2.setImageBitmap(InitUserDataUtil.userHeadBitmap);
-        userHead.setBackground(new BitmapDrawable(InitUserDataUtil.userHeadBitmap));
-        username.setText(InitUserDataUtil.GetUserNickName());
-        usertype.setText(InitUserDataUtil.GetUserType());
+        userHead2.setImageBitmap(UserService.userHeadBitmap);
+        userHead.setBackground(new BitmapDrawable(UserService.userHeadBitmap));
+        username.setText(UserService.GetUserNickName());
+        usertype.setText(UserService.GetUserType());
         pagename.setText("主页");
 
         userHead.setOnClickListener(v -> MainActivity.drawerLayout.openDrawer(Gravity.LEFT));

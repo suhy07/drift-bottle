@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.myhomework.R;
+import com.example.myhomework.Service.UserService;
 import com.example.myhomework.Util.SaveIdPasswordUtil;
 
 import org.json.JSONException;
@@ -57,15 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         bg_login = findViewById(R.id.bg_login_background_LoginActivity);
         lottie = findViewById(R.id.lottieAnimationView);
 
-
-
         userID.setTranslationY(300);
         userPassWord.setTranslationY(300);
         login.setTranslationY(300);
         register.setTranslationY(300);
         chBOX.setTranslationY(300);
         bg_login.setTranslationY(-1000);
-
 
         userID.setAlpha(0);
         userPassWord.setAlpha(0);
@@ -82,35 +80,25 @@ public class LoginActivity extends AppCompatActivity {
         bg_login.animate().translationY(0).alpha(1).setDuration(2000).setStartDelay(400).start();
         lottie.animate().translationY(0).alpha(0).setDuration(2000).setStartDelay(400).start();
 
-
-
         ////////////读取账户密码
         Map<String,String> userInfo= SaveIdPasswordUtil.getUserInfo(this);
         userID.setText(userInfo.get("account"));
         userPassWord.setText(userInfo.get("password"));
         Toast.makeText(this,"读取成功",Toast.LENGTH_LONG).show();
 
-
-        login.setOnClickListener(new View.OnClickListener(){
-            @Override
-
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                if(loginCheck(userID,userPassWord)){
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Toast.makeText(LoginActivity.this,errorString,Toast.LENGTH_LONG).show();
-                }
+        login.setOnClickListener(v -> {
+            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+            if(loginCheck(userID,userPassWord)){
+                startActivity(intent);
+                finish();
+            }else{
+                Toast.makeText(LoginActivity.this,errorString,Toast.LENGTH_LONG).show();
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
+        register.setOnClickListener(v -> {
+            Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -119,43 +107,14 @@ public class LoginActivity extends AppCompatActivity {
 
         //是否保存账号密码选项
         chBOX = findViewById(R.id.checkBox_LoginActivity);
-        int code=0;
         String name = userID.getText().toString();
         String password = userPassWord.getText().toString();
-
-        try
-        {
-            String str="http://49.235.134.191:8080/user/login?account="+name+"&password="+password;
-            URL url = new URL(str);
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
-            HttpURLConnection conn = null;
-            conn = (HttpURLConnection) url.openConnection();
-            //设置请求方式为Get请求
-            conn.setRequestMethod("GET");
-            conn.connect();//获取连接
-            InputStream inputStream=conn.getInputStream();//获取输入流
-            StringBuilder sb1 = new StringBuilder();//创建读取
-            String line;
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            while ((line = br.readLine()) != null) {
-                sb1.append(line);
-            }
-            String s = sb1.toString();
-            JSONObject jsonObj  =  new JSONObject(s);
-            code= jsonObj.optInt("code");
-
-
-        }
-        catch (IOException | JSONException e)
-        {
-            e.printStackTrace();
-        }
-
+        boolean loginFlag= true;
 
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(password)) {
             errorString = "账户或密码为空";
             return LOGINFAULT;
-        } else if (code==200) {
+        } else if (loginFlag) {
             if(chBOX.isChecked()){
                 boolean isSaveSuccess=SaveIdPasswordUtil.saveUserInfo(this,name,password);
                 Toast.makeText(this,"保存成功",Toast.LENGTH_LONG).show();

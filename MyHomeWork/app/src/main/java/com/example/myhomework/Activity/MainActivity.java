@@ -11,33 +11,30 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
+import android.provider.MediaStore;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 
 import com.example.myhomework.R;
-import com.example.myhomework.Util.HttpUtil;
-import com.example.myhomework.Util.InitUserDataUtil;
-import com.example.myhomework.Util.PhotoUtil;
+import com.example.myhomework.Service.UserService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.myhomework.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
-import java.io.File;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         mainActivity=this;
         setContentView(binding.getRoot());
-        InitUserDataUtil.ResetUserData();
+        UserService.ResetUserData();
         BottomNavigationView navView = binding.navView;
         drawerLayout=binding.drawerLayout;
         NavigationView navigationView=binding.navigationView;
@@ -66,25 +63,29 @@ public class MainActivity extends AppCompatActivity {
         verifyStoragePermissions(this);
 
         //Bitmap pngBM=getURLimage("http://47.98.173.217:8080");
-        circleImageView.setImageBitmap(InitUserDataUtil.userHeadBitmap);
+        circleImageView.setImageBitmap(UserService.userHeadBitmap);
         //imageView.setImageBitmap(pngBM);
+        test();
 
     }
     public static Uri picuri;
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public static String filename;
 
-        if(requestCode==2){
-            if(data!=null){
-                Uri uri=data.getData();
-                String path= PhotoUtil.handleImageOnKitKat(data,this);
-                File file=new File(path);
-                HttpUtil.Post_file("http://47.98.173.217:8080/uploadFile",file.getName(),file.getPath());
-                Toast.makeText(this,data.getData().toString(),Toast.LENGTH_LONG).show();
-                picuri=uri;
-            }
-        }
+    @Override
+    protected  void  onActivityResult(int  requestCode,  int  resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bitmap= null;
+        try {
+            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(picuri));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        //存入相册
+        MediaStore.Images.Media.insertImage(this.getContentResolver(),
+                bitmap, filename, null);
     }
+
+
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE={
             "android.permission.READ_EXTERNAL_STORAGE",
@@ -98,6 +99,24 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(activity,PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);//弹出权限申请对话框
             }
         }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void test(){
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\r\n    \"imageUrl\":\"\",\r\n    \"title\":\"快递中心门口井盖没盖！\",\r\n    \"desc\":\"前面的路上有井盖没盖好！大家注意绕行！！\",\r\n    \"account\":\"221900203\",\r\n    \"address\":\"福建\",\r\n    \"category\":\"安全隐患\",\r\n    \"degree\":1,\r\n    \"time\":\"2021-11-06T13:14:25.909+00:00\",\r\n    \"process\":\"处理完成\"\r\n}\r\n\r\n");
+        Request request = new Request.Builder()
+                .url("http://49.235.134.191:8080/feedback/save")
+                .method("POST", body)
+                .addHeader("feedBack", "application/json")
+                .addHeader("Content-Type", "application/json")
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            Toast.makeText(MainActivity.this,response.message()+":response",Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

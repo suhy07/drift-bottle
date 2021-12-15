@@ -29,16 +29,11 @@ public class SaveIdPasswordUtil {
     //从data.xml读取账号密码
     public static Map<String,String> getUserInfo(Context context){
         SharedPreferences sp= context.getSharedPreferences("data", Context.MODE_PRIVATE);
-
         String account =sp.getString("UserId",null);
         String password =sp.getString("UserPassWord",null);
-        /*Log.d("test",account);
-        Log.d("test",password);*/
         Map<String,String> UserMap=new HashMap<String,String>();
         UserMap.put("account",account);
         UserMap.put("password",password);
-        /*String str="mp"+UserMap.get("password");
-        Log.d("test",str);*/
         return  UserMap;
     }
 }

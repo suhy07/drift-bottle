@@ -7,5 +7,4 @@ class UserHead(
     val id:String,
     val historyMsg:String,
     val msgNum:Int) {
-
 }

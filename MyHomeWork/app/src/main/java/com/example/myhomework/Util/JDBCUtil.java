@@ -1,5 +1,7 @@
 package com.example.myhomework.Util;
 
+import static com.example.myhomework.Global.GlobalMemory.*;
+
 import android.util.Log;
 
 import java.sql.Connection;
@@ -9,9 +11,7 @@ import java.sql.ResultSet;
 
 public class JDBCUtil {
     public static JDBCUtil jdbcUtil=new JDBCUtil();
-    private static  String url = "jdbc:mysql://47.98.173.217:3307/schoolphoto";
-    private static String MysqlUser = "suhy";
-    private static String MysqlPassword = "shy123321";
+
     private JDBCUtil(){
     }
 
@@ -22,14 +22,13 @@ public class JDBCUtil {
 
     public static Connection Connection() {
         Connection connection=null;
-       // String url = "jdbc:mysql://47.98.173.217:3306/schoolphoto";
         try {
-            String SDdriver = "com.mysql.jdbc.Driver";
+            String SDdriver = "com.mysql.cj.jdbc.Driver";
             Class.forName(SDdriver);
-            connection=DriverManager.getConnection(url, MysqlUser, MysqlPassword);
-            Log.d("ttt", url+"连接成功");
+            connection=DriverManager.getConnection(DateBaseurl, MysqlUser, MysqlPassword);
+            Log.d(TAG, "连接成功"+DateBaseurl);
         } catch (Exception e) {
-            Log.d("ttt1", e.toString());
+            Log.d(TAG, "连接失败"+e.getMessage()+"    url:"+DateBaseurl+"    id:"+MysqlUser+"    password:"+MysqlPassword);
             e.printStackTrace();
         }
         return connection;
