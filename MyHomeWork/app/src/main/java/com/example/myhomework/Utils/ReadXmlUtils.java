@@ -1,17 +1,16 @@
-package com.example.myhomework.Util;
+package com.example.myhomework.Utils;
 
 import org.w3c.dom.*;
 
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 
-public class ReadXmlUtil {
+public class ReadXmlUtils {
 
-    private static ReadXmlUtil readXmlUtil=new ReadXmlUtil();
+    private static ReadXmlUtils readXmlUtil=new ReadXmlUtils();
 
     private static void ReadXmlUtil(){
 

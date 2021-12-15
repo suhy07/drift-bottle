@@ -1,28 +1,15 @@
 package com.example.myhomework.Fragment;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,15 +18,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myhomework.Activity.MainActivity;
 import com.example.myhomework.R;
-import com.example.myhomework.Util.PermissionsUtil;
-import com.example.myhomework.Util.PhotoUtil;
+import com.example.myhomework.Utils.PermissionsUtils;
+import com.example.myhomework.Utils.PhotoUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -105,7 +90,7 @@ public class PhotoFragment extends Fragment {
         Button chooseFromAlbum = view.findViewById(R.id.choose_from_album);
         picture = view.findViewById(R.id.picture);
 
-        PermissionsUtil.verifyStoragePermissions(getActivity());//获取权限
+        PermissionsUtils.verifyStoragePermissions(getActivity());//获取权限
 
         takePhoto.setOnClickListener(v -> {
             // 创建File对象，用于存储拍照后的图片
@@ -134,7 +119,7 @@ public class PhotoFragment extends Fragment {
             startActivity(intent);
         });
         chooseFromAlbum.setOnClickListener(v-> {
-            PhotoUtil.openAlbum(getActivity());
+            PhotoUtils.openAlbum(getActivity());
             picture.setImageURI(MainActivity.picuri);
         });
         TextView PageName=view.findViewById(R.id.textview_toolbar);

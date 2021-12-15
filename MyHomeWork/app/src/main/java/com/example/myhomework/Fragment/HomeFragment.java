@@ -86,7 +86,6 @@ public class HomeFragment extends Fragment {
         TextView pagename=mview.findViewById(R.id.textview_toolbar);
 
         userHead2.setImageBitmap(UserService.userHeadBitmap);
-        userHead.setBackground(new BitmapDrawable(UserService.userHeadBitmap));
         username.setText(UserService.GetUserNickName());
         usertype.setText(UserService.GetUserType());
         pagename.setText("主页");

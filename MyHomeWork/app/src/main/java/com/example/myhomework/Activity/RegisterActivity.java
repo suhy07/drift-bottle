@@ -11,54 +11,42 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myhomework.R;
+import com.example.myhomework.Service.UserService;
+import com.example.myhomework.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
-    Button register1;
-    EditText UserID1,UserPassWord1,UserPassWord2;
+    Button register;
+    EditText UserName,UserPassWord1,UserPassWord2,UID;
     String errorString;
-    static final Boolean REGISTERSUCCESS=true,REGISTERFAULT=false;
-
+    ActivityRegisterBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        binding=ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        UID=binding.uid;
+        UserName=binding.username;
+        UserPassWord1=binding.password;
+        UserPassWord2=binding.password2;
+        register=binding.button;
 
-        UserID1 = findViewById(R.id.editText2);
-        UserPassWord1=findViewById(R.id.editText1);
-        UserPassWord2=findViewById(R.id.editText3);
-        register1=findViewById(R.id.button123);
+        register.setOnClickListener(v -> {
+           register1(UID,UserName,UserPassWord1,UserPassWord2);
 
-        register1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
-                if(register1(UserID1,UserPassWord1,UserPassWord2)){
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Toast.makeText(RegisterActivity.this,errorString,Toast.LENGTH_LONG).show();
-                }
-            }
         });
     }
-    private boolean register1(EditText UserID1,EditText UserPassWord1,EditText UserPassWord2) {
+    private void register1(EditText UID,EditText UserID1,EditText UserPassWord1,EditText UserPassWord2) {
         //TODO注册检查
-
+        String uid=UID.getText().toString().trim();
         String name = UserID1.getText().toString().trim();
         String password1 = UserPassWord1.getText().toString().trim();
         String password2 = UserPassWord2.getText().toString().trim();
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(password1)||TextUtils.isEmpty(password2)) {
-            errorString = "账户或密码为空";
-            return REGISTERFAULT;
-        } else if (name.equals("abc") && password1.equals("123")&& password2.equals("123")) {
-            return REGISTERSUCCESS;
-        } else if (name.equals("def") && password1.equals("456")&& password2.equals("456")) {
-            return REGISTERSUCCESS;
+        if (TextUtils.isEmpty(uid) ||TextUtils.isEmpty(name) || TextUtils.isEmpty(password1)||TextUtils.isEmpty(password2)) {
+            Toast.makeText(this,"账号、用户名、密码不能为空",Toast.LENGTH_LONG).show();
+        } else if (!password1.equals(password2)) {
+            Toast.makeText(this,"两次密码不一致",Toast.LENGTH_LONG).show();
         } else {
-            errorString = "注册失败";
-            return REGISTERFAULT;
+            UserService.Register(uid,name,password1,this);
         }
-
     }
-
 }

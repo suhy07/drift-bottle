@@ -1,4 +1,4 @@
-package com.example.myhomework.Util;
+package com.example.myhomework.Utils;
 
 import static com.example.myhomework.Global.GlobalMemory.*;
 
@@ -9,21 +9,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class JDBCUtil {
-    public static JDBCUtil jdbcUtil=new JDBCUtil();
-
-    private JDBCUtil(){
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
+public class JDBCUtils {
 
     public static Connection Connection() {
         Connection connection=null;
         try {
-            String SDdriver = "com.mysql.cj.jdbc.Driver";
+            String SDdriver = "com.mysql.jdbc.Driver";
             Class.forName(SDdriver);
             connection=DriverManager.getConnection(DateBaseurl, MysqlUser, MysqlPassword);
             Log.d(TAG, "连接成功"+DateBaseurl);

@@ -1,6 +1,4 @@
-package com.example.myhomework.Util;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
+package com.example.myhomework.Utils;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -18,7 +16,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PhotoUtil {
+public class PhotoUtils {
 
     public static void openAlbum(Activity activity) {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");

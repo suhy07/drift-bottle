@@ -1,4 +1,4 @@
-package com.example.myhomework.Util;
+package com.example.myhomework.Utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +15,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class HttpUtil {
+public class HttpUtils {
 
     private static void HttpUtil(){}
     public static String Post_file(String url,String filename,String pathname){

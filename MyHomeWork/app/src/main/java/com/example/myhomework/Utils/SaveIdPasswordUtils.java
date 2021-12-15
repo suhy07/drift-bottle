@@ -1,13 +1,12 @@
-package com.example.myhomework.Util;
+package com.example.myhomework.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SaveIdPasswordUtil {
+public class SaveIdPasswordUtils {
 
     //保存账号密码到data.xml
     public static boolean saveUserInfo(Context context, String account, String password){
@@ -16,7 +15,6 @@ public class SaveIdPasswordUtil {
         edit.putString("UserId",account);
         edit.putString("UserPassWord",password);
         edit.commit();
-
         return true;
     }
     public static void delectUserInfo(Context context){
