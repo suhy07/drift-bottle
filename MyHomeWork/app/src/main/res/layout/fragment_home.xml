@@ -127,7 +127,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.202"
-        app:srcCompat="@drawable/icon_head" />
+        app:srcCompat="@drawable/icon_contact" />
 
     <TextView
         android:id="@+id/textView_UserName_HomePage"

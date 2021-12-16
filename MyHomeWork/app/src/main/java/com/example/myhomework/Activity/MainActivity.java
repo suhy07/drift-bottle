@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.myhomework.R;
 import com.example.myhomework.Service.UserService;
 import com.example.myhomework.databinding.AppbarBinding;
+import com.example.myhomework.databinding.DrawerHeaderBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.myhomework.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -40,28 +41,26 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static DrawerLayout drawerLayout;
     private ActivityMainBinding binding;
     private AppbarBinding appbarBinding;
-    public static DrawerLayout drawerLayout;
+    private DrawerHeaderBinding headerBinding;
     public static MainActivity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         appbarBinding=AppbarBinding.inflate(getLayoutInflater());
+        headerBinding=DrawerHeaderBinding.inflate(getLayoutInflater());
         mainActivity=this;
         setContentView(binding.getRoot());
         UserService.ResetUserData();
-        BottomNavigationView navView = binding.navView;
         drawerLayout=binding.drawerLayout;
-        NavigationView navigationView=binding.navigationView;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        View headlayoutView=navigationView.inflateHeaderView(R.layout.drawer_header);
-        CircleImageView circleImageView=headlayoutView.findViewById(R.id.userhead_drawerlayout);
         appbarBinding.imageButtonUserHeadToolbar.setImageBitmap(UserService.userHeadBitmap);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        headerBinding.userheadDrawerlayout.setImageBitmap(UserService.userHeadBitmap);
         verifyStoragePermissions(this);
-        circleImageView.setImageBitmap(UserService.userHeadBitmap);
     }
     public static Uri picuri;
     public static String filename;
