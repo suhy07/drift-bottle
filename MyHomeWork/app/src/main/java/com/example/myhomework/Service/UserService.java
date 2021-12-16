@@ -44,6 +44,8 @@ public class UserService {
             }catch (Exception e){
                 GlobalMemory.PrintLog(TAG+e.getMessage());
                 GlobalMemory.PrintLog(TAG+sql);
+                activity.runOnUiThread(()->   Toast.makeText(activity,e.getMessage(),Toast.LENGTH_LONG).show());
+
             }
         }).start();
     }

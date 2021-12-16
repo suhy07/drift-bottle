@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myhomework.Activity.MainActivity;
+import com.example.myhomework.Activity.UpdatePhotoActivity;
 import com.example.myhomework.R;
 import com.example.myhomework.Utils.PermissionsUtils;
 import com.example.myhomework.Utils.PhotoUtils;
@@ -28,56 +29,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PhotoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PhotoFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PhotoFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SecondFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PhotoFragment newInstance(String param1, String param2) {
-        PhotoFragment fragment = new PhotoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     private ImageView picture;
     private Uri imageUri;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
     @Override
@@ -94,6 +53,7 @@ public class PhotoFragment extends Fragment {
 
         takePhoto.setOnClickListener(v -> {
             // 创建File对象，用于存储拍照后的图片
+            /*
             File outputImage = new File(view.getContext().getExternalCacheDir(), UUID.randomUUID().toString());
             try {
                 if (outputImage.exists()) {
@@ -114,8 +74,10 @@ public class PhotoFragment extends Fragment {
                         outputImage);
             }
             // 启动相机程序
-            Intent intent =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+             */
+            //Intent intent =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            //intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            Intent intent =new Intent(getActivity(), UpdatePhotoActivity.class);
             startActivity(intent);
         });
         chooseFromAlbum.setOnClickListener(v-> {

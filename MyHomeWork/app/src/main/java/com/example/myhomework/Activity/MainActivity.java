@@ -17,6 +17,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -50,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         appbarBinding=AppbarBinding.inflate(getLayoutInflater());
         headerBinding=DrawerHeaderBinding.inflate(getLayoutInflater());
         mainActivity=this;
-        setContentView(binding.getRoot());
         UserService.ResetUserData();
         drawerLayout=binding.drawerLayout;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);

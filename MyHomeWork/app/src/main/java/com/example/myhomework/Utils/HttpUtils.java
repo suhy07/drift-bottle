@@ -53,10 +53,6 @@ public class HttpUtils {
             conn.connect();
             InputStream is = conn.getInputStream();//获得图片的数据流
             bmp = BitmapFactory.decodeStream(is);//读取图像数据
-            //读取文本数据
-            //byte[] buffer = new byte[100];
-            //inputStream.read(buffer);
-            //text = new String(buffer);
             is.close();
         } catch (Exception e) {
             e.printStackTrace();

@@ -19,20 +19,9 @@ import com.example.myhomework.MemObject.Msg
 import com.example.myhomework.MemObject.UserHead
 import com.example.myhomework.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BlankFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChatFragment : Fragment() {
-    // TODO: Rename and change types of parameters
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     private val msgList = ArrayList<Msg>()
     private val userList = ArrayList<UserHead>()

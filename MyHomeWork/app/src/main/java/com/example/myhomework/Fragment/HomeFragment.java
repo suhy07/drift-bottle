@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
         ImageView userHead=binding.imageViewUserHeadHomepage;
         TextView username=binding.textViewUserNameHomePage;
         TextView usertype=binding.textViewUserTypeHomePage;
-        TextView pagename=binding.getRoot().findViewById(R.id.imageButton_UserHead_toolbar);
+        TextView pagename=binding.getRoot().findViewById(R.id.textview_toolbar);
         ImageButton imageButton=binding.getRoot().findViewById(R.id.imageButton_UserHead_toolbar);
         imageButton.setOnClickListener(v->MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
 

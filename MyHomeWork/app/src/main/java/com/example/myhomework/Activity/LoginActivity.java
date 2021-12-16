@@ -67,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
         Map<String,String> userInfo= SaveIdPasswordUtils.getUserInfo(this);
         userID.setText(userInfo.get("account"));
         userPassWord.setText(userInfo.get("password"));
-        Toast.makeText(this,"读取成功",Toast.LENGTH_LONG).show();
         login.setOnClickListener(v -> {
             loginCheck(userID,userPassWord);
         });
@@ -78,16 +77,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //对账号密码做检验
-    private boolean loginCheck(EditText userID,EditText userPassWord){
+    private void loginCheck(EditText userID,EditText userPassWord){
         //是否保存账号密码选项
         chBOX = findViewById(R.id.checkBox_LoginActivity);
         String name = userID.getText().toString();
         String password = userPassWord.getText().toString();
         UserService.Login(name,password,this);
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(password)) {
-            errorString = "账户或密码为空";
-            //ApplicationContext.showToast(errorString);
-            return LOGINFAULT;
+            Toast.makeText(this,"账户或密码为空",Toast.LENGTH_LONG).show();
         } else{
             UserService.Login(name,password,this);
             if(chBOX.isChecked()){
@@ -98,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
             else{
                 SaveIdPasswordUtils.delectUserInfo(this);
             }
-            return LOGINSUCCESS;
         }
     }
 }
