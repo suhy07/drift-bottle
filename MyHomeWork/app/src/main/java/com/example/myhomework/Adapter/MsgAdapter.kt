@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myhomework.MemObject.Msg
+import com.example.myhomework.Bean.Msg
 import com.example.myhomework.R
 import java.lang.IllegalArgumentException
 
@@ -26,7 +26,7 @@ class MsgAdapter(val msgList:List<Msg>):RecyclerView.Adapter<RecyclerView.ViewHo
     }
     //根据viewType消息类型的不同,构建不同的消息布局(左&右)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if(viewType==Msg.LEFT){
+        if(viewType== Msg.LEFT){
             val leftView = LayoutInflater.from(parent.context).inflate(R.layout.msg_left_layout,parent,false)
             return LeftViewHolder(leftView) //返回控件+布局
         }else{

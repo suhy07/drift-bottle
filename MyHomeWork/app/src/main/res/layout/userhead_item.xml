@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/userHeadImageView"
+        android:id="@+id/img"
         android:layout_width="68dp"
         android:layout_height="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -14,10 +14,11 @@
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icon_head" />
 
     <TextView
-        android:id="@+id/userIdTextView"
+        android:id="@+id/title"
         android:layout_width="49dp"
         android:layout_height="26dp"
         android:text="用户ID"
@@ -29,7 +30,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/historyMsgTextView"
+        android:id="@+id/msg"
         android:layout_width="130dp"
         android:layout_height="49dp"
         android:text="当前消息"
@@ -44,10 +45,10 @@
         android:id="@+id/msgNumImageView"
         android:layout_width="48dp"
         android:layout_height="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/historyMsgTextView"
+        app:layout_constraintBottom_toTopOf="@+id/msg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
-        app:layout_constraintStart_toEndOf="@+id/userIdTextView"
+        app:layout_constraintStart_toEndOf="@+id/title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

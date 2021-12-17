@@ -1,4 +1,4 @@
-package com.example.myhomework.MemObject
+package com.example.myhomework.Bean
 
 import android.net.Uri
 

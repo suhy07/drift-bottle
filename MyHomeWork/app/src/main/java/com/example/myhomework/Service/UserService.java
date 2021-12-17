@@ -149,7 +149,7 @@ public class UserService {
     public static String GetUserType(){
         return userType;
     }
-    public static void GetUserHead(){
-        userHeadBitmap= HttpUtils.getURLimage(GlobalMemory.FileServerUri+"/downloadFile/"+head);
+    public static String GetUserHead(){
+       return head;
     }
 }

@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myhomework.Activity.MainActivity
 import com.example.myhomework.Adapter.MsgAdapter
 import com.example.myhomework.Adapter.UserHeadAdapter
-import com.example.myhomework.MemObject.Msg
-import com.example.myhomework.MemObject.UserHead
+import com.example.myhomework.Bean.Msg
+import com.example.myhomework.Bean.UserHead
 import com.example.myhomework.R
 
 
@@ -38,7 +38,7 @@ class ChatFragment : Fragment() {
             val messageEditText: EditText =view.findViewById(R.id.messageEditText)
             val content:String = messageEditText.text.toString()   //获取输入框的文本
             if(content.isNotEmpty()){
-                msgList.add(Msg(content,Msg.RIGHT))     //将输入的消息及其类型添加进消息数据列表中
+                msgList.add(Msg(content, Msg.RIGHT))     //将输入的消息及其类型添加进消息数据列表中
                 charAdapter.notifyItemInserted(msgList.size-1)   //为RecyclerView添加末尾子项
                 charRecyclerView.scrollToPosition(msgList.size-1) //跳转到当前位置
                 messageEditText.setText("")    //清空输入框文本
@@ -53,14 +53,15 @@ class ChatFragment : Fragment() {
         val pagename:TextView= view.findViewById(R.id.textview_toolbar);
         pagename.setText("通讯录")
         val userhead:ImageButton=view.findViewById(R.id.imageButton_UserHead_toolbar)
-        userhead.setOnClickListener(View.OnClickListener { View->MainActivity.drawerLayout.openDrawer(Gravity.LEFT) })
+        userhead.setOnClickListener({ v->MainActivity.drawerLayout.openDrawer(Gravity.LEFT) })
         return view
     }
     fun initMsg(){
-        msgList.add(Msg("聊天信息测试",Msg.LEFT))
+        msgList.add(Msg("我说句话试试", Msg.LEFT))
+        msgList.add(Msg("聊天信息测试", Msg.LEFT))
     }
     fun initHead(){
-        userList.add(UserHead(R.drawable.camera,"大宝","hi",1))
+        userList.add(UserHead(R.drawable.camera,"大宝","",1))
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.myhomework.MemObject
+package com.example.myhomework.Bean
 
 class Msg(val content:String,val type:Int){
     //定义静态成员

@@ -6,8 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".Activity.UpdatePhotoActivity">
 
+    <Button
+        android:id="@+id/push"
+        android:layout_width="162dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#F4F4F4"
+        android:text="提交"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
     <EditText
-        android:id="@+id/upate_title"
+        android:id="@+id/msg"
         android:layout_width="368dp"
         android:layout_height="65dp"
         android:hint="请输入问题描述"
@@ -19,7 +33,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <EditText
-        android:id="@+id/upate_des"
+        android:id="@+id/title"
         android:layout_width="368dp"
         android:layout_height="65dp"
         android:hint="请输入标题"
@@ -28,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -42,21 +56,22 @@
         app:layout_constraintVertical_bias="0.467">
 
         <RadioButton
-            android:id="@+id/radioButton16"
+            android:id="@+id/radioButton01"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="安全隐患" />
 
         <RadioButton
-            android:id="@+id/radioButton17"
+            android:id="@+id/radioButton02"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="卫生问题" />
 
         <RadioButton
-            android:id="@+id/radioButton18"
+            android:id="@+id/radioButton03"
             android:layout_width="186dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,13 +91,14 @@
         app:layout_constraintVertical_bias="0.547">
 
         <RadioButton
-            android:id="@+id/radioButton20"
+            android:id="@+id/radioButton10"
             android:layout_width="189dp"
             android:layout_height="match_parent"
+            android:checked="true"
             android:text="重要" />
 
         <RadioButton
-            android:id="@+id/radioButton21"
+            android:id="@+id/radioButton11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="一般" />
@@ -105,15 +121,14 @@
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/baiduMapView"
-        android:layout_width="410dp"
-        android:layout_height="136dp"
+        android:layout_width="417dp"
+        android:layout_height="174dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794"
+        app:layout_constraintVertical_bias="0.834"
         tools:ignore="MissingConstraints" />
 
 

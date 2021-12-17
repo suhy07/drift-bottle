@@ -1,9 +1,13 @@
 package com.example.myhomework.Utils;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -16,7 +20,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HttpUtils {
-
     private static void HttpUtil(){}
     public static String Post_file(String url,String filename,String pathname){
         OkHttpClient client = new OkHttpClient().newBuilder()
@@ -41,8 +44,28 @@ public class HttpUtils {
         return str;
     }
 
-    public static Bitmap getURLimage(String url) {
-        Bitmap bmp = null;
+    public static void setURLimageViewByBitmap(String url, ImageView imageView, Activity activity) {
+        new Thread(()->{
+            try {
+            URL myurl = new URL(url);
+            // 获得连接
+            HttpURLConnection conn = (HttpURLConnection) myurl.openConnection();
+            conn.setConnectTimeout(6000);//设置超时
+            conn.setDoInput(true);
+            conn.setUseCaches(false);//不缓存
+            conn.connect();
+            InputStream is = null;//获得图片的数据流is = conn.getInputStream();
+            Bitmap bitmap=BitmapFactory.decodeStream(is);
+            imageView.setImageBitmap(bitmap);
+            activity.runOnUiThread(()->{
+
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }).start();
+    }
+    public static void setURLimageButtonByBitmap(String url, ImageButton imageButton, Activity activity) {
         try {
             URL myurl = new URL(url);
             // 获得连接
@@ -52,11 +75,10 @@ public class HttpUtils {
             conn.setUseCaches(false);//不缓存
             conn.connect();
             InputStream is = conn.getInputStream();//获得图片的数据流
-            bmp = BitmapFactory.decodeStream(is);//读取图像数据
+            activity.runOnUiThread(()->imageButton.setImageBitmap(BitmapFactory.decodeStream(is)));
             is.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return bmp;
     }
 }
