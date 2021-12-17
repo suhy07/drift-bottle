@@ -19,6 +19,7 @@ import com.example.myhomework.Service.UserService;
 import com.example.myhomework.Utils.HttpUtils;
 import com.example.myhomework.databinding.ActivityHistoricalRecordsBinding;
 import com.example.myhomework.databinding.HistoryrecordItemBinding;
+import     com.example.myhomework.databinding.AppbarBinding;
 
 import java.util.ArrayList;
 
@@ -29,13 +30,16 @@ public class HistoricalRecordsActivity extends AppCompatActivity {
     public static HistoryRecord temhistory;
     static ArrayList<HistoryRecord> historyRecordArrayList=new ArrayList<>();
     HistoryrecordItemBinding itemBinding;
+    AppbarBinding appbarBinding;
     static RecyclerView.Adapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity=this;
         binding=ActivityHistoricalRecordsBinding.inflate(getLayoutInflater());
+        appbarBinding=AppbarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.include.textviewToolbar.setText("提交历史");
         setRecy();
         HistoryRecordService.checkHistoryById(UserService.GetUid());
     }
