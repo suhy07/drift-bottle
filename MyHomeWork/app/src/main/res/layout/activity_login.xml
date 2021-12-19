@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
 
-
-    tools:context=".Activity.LoginActivity">
+    tools:context=".activity.LoginActivity">
 
     <ImageView
         android:id="@+id/bg_login_background_LoginActivity"
         android:layout_width="wrap_content"
         android:layout_height="900dp"
-        android:src="@drawable/bg_login_background"
         android:scaleType="centerCrop"
+        android:src="@drawable/bg_login_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editText_UserID_LoginActivity"
         android:layout_width="282dp"
         android:layout_height="54dp"
         android:layout_marginTop="368dp"
-        android:maxLines="2"
         android:hint="账号"
+        android:maxLines="2"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -39,8 +38,10 @@
         android:layout_height="60dp"
         android:layout_marginBottom="77dp"
         android:editable="true"
+        android:inputType="textPassword"
         android:hint="密码"
         android:maxLines="2"
+        android:drawableRight="@drawable/eye"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/button_Login_LoginActivity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +55,8 @@
         android:id="@+id/button_Login_LoginActivity"
         android:layout_width="256dp"
         android:layout_height="48dp"
-        android:text="登录"
         android:backgroundTint="#F4F4F4"
+        android:text="登录"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,8 +67,8 @@
         android:id="@+id/button_Register_LoginActivity"
         android:layout_width="256dp"
         android:layout_height="48dp"
-        android:text="注册"
         android:backgroundTint="#F4F4F4"
+        android:text="注册"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,8 +91,8 @@
         android:id="@+id/checkBox_LoginActivity"
         android:layout_width="282dp"
         android:layout_height="48dp"
-        android:text="记住账号密码"
         android:checked="true"
+        android:text="记住账号密码"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
