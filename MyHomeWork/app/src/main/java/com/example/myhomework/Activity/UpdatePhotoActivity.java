@@ -79,11 +79,10 @@ public class UpdatePhotoActivity extends AppCompatActivity {
             popup.setOnMenuItemClickListener(item->{
                 switch (item.getItemId()) {
                     case R.id.photo:
-                        Toast.makeText(this, "拍照", Toast.LENGTH_SHORT).show();
-
+                        Intent intent =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(intent,3);
                         break;
                     case R.id.select:
-                        Toast.makeText(this, "选择", Toast.LENGTH_SHORT).show();
                         openAlbum();
                         break;
                     default:
@@ -253,7 +252,6 @@ public class UpdatePhotoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data) {
         switch (requestCode) {
-
             case 2:
                 if (Build.VERSION.SDK_INT >= 19) {
                     Uri uri=data.getData();
@@ -266,6 +264,21 @@ public class UpdatePhotoActivity extends AppCompatActivity {
                     Toast.makeText(this,"4.4以下",Toast.LENGTH_LONG).show();
                 }
                 break;
+            case 3:
+                Uri uri=data.getData();
+                path= FileUtils.getPath(this,uri);
+                img=path.split("/")[path.split("/").length-1];
+                this.imageview=findViewById(R.id.picture);
+                this.imageview.setImageURI(uri);
+                Bitmap bitmap= null;
+                try {
+                    bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(data.getData()));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                //存入相册
+                MediaStore.Images.Media.insertImage(this.getContentResolver(),
+                        bitmap,img, null);
             default:
                 break;
 
