@@ -46,6 +46,7 @@ public class HttpUtils {
 
     public static void setURLimageViewByBitmap(String url, ImageView imageView, Activity activity) {
         new Thread(()->{
+
             try {
             URL myurl = new URL(url);
             // 获得连接
@@ -54,11 +55,11 @@ public class HttpUtils {
             conn.setDoInput(true);
             conn.setUseCaches(false);//不缓存
             conn.connect();
-            InputStream is = null;//获得图片的数据流is = conn.getInputStream();
+            InputStream is = null;
+            is = conn.getInputStream();
             Bitmap bitmap=BitmapFactory.decodeStream(is);
-            imageView.setImageBitmap(bitmap);
             activity.runOnUiThread(()->{
-
+                imageView.setImageBitmap(bitmap);
             });
         } catch (Exception e) {
             e.printStackTrace();

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myhomework.Activity.MainActivity;
@@ -32,7 +33,7 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mview=inflater.inflate(R.layout.fragment_news, container, false);
-        ImageButton userhead=  mview.findViewById(R.id.imageButton_UserHead_toolbar);
+        ImageView userhead=  mview.findViewById(R.id.imageButton_UserHead_toolbar);
         RecyclerView recyclerView = mview.findViewById(R.id.recyclerview);
         TextView PageName=mview.findViewById(R.id.textview_toolbar);
 

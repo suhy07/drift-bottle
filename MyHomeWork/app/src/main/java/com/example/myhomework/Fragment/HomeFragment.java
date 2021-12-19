@@ -1,10 +1,15 @@
 package com.example.myhomework.Fragment;
 
+import static com.baidu.mapapi.search.core.SearchResult.ERRORNO.NETWORK_ERROR;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,10 +21,19 @@ import android.widget.TextView;
 
 
 import com.example.myhomework.Activity.MainActivity;
+import com.example.myhomework.Global.GlobalMemory;
 import com.example.myhomework.R;
 import com.example.myhomework.Service.UserService;
+import com.example.myhomework.Utils.HttpUtils;
 import com.example.myhomework.databinding.AppbarBinding;
 import com.example.myhomework.databinding.FragmentHomeBinding;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 
 public class HomeFragment extends Fragment {
@@ -46,10 +60,11 @@ public class HomeFragment extends Fragment {
         TextView username=binding.textViewUserNameHomePage;
         TextView usertype=binding.textViewUserTypeHomePage;
         TextView pagename=binding.getRoot().findViewById(R.id.textview_toolbar);
-        ImageButton imageButton=binding.getRoot().findViewById(R.id.imageButton_UserHead_toolbar);
+        ImageView imageButton=binding.getRoot().findViewById(R.id.imageButton_UserHead_toolbar);
         imageButton.setOnClickListener(v->MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
 
-        userHead.setImageBitmap(UserService.userHeadBitmap);
+        HttpUtils.setURLimageViewByBitmap(GlobalMemory.FileServerDownloadFileUri+"/"+
+         UserService.GetUserHead(),userHead,getActivity());
         username.setText(UserService.GetUserNickName());
         usertype.setText(UserService.GetUserType());
         pagename.setText("主页");

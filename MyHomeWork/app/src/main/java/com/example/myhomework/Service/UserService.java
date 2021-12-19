@@ -130,6 +130,7 @@ public class UserService {
                     userType=resultSet.getString("userType");
                     head=resultSet.getString("head");
                     GlobalMemory.PrintLog("初始化\nuid："+uid+"\nname"+userNickName+"\nhead:"+head);
+                    MainActivity.mainActivity.onRecallSetHead();
                 }
             } catch (SQLException e) {
                 GlobalMemory.PrintLog(TAG+e.getMessage());
@@ -137,8 +138,6 @@ public class UserService {
                 JDBCUtils.closeAll(resultSet,preparedStatement,connection);
             }
         }).start();
-        GetUserHead();
-
     }
     public static String GetUid(){
         return uid;

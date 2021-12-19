@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 
+import androidx.appcompat.widget.PopupMenu;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -45,6 +47,7 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.example.myhomework.Service.HistoryRecordService;
 import com.example.myhomework.Service.UserService;
+import com.example.myhomework.Utils.PhotoUtils;
 import com.example.myhomework.databinding.ActivityUpdatePhotoBinding;
 
 import java.io.FileNotFoundException;
@@ -67,19 +70,28 @@ public class UpdatePhotoActivity extends AppCompatActivity {
 
         ImageView imageView;
         imageView = findViewById(R.id.picture);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(UpdatePhotoActivity.this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        imageView.setOnClickListener(v -> {
+            //创建弹出式菜单对象
+            PopupMenu popup = new PopupMenu(this, v);
+            MenuInflater inflater = popup.getMenuInflater();
+            inflater.inflate(R.menu.photo_menu, popup.getMenu());
+            //绑定菜单项的点击事件
+            popup.setOnMenuItemClickListener(item->{
+                switch (item.getItemId()) {
+                    case R.id.photo:
+                        Toast.makeText(this, "拍照", Toast.LENGTH_SHORT).show();
 
-                    ActivityCompat.requestPermissions(UpdatePhotoActivity.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            1);
-                } else {
-                    openAlbum();
+                        break;
+                    case R.id.select:
+                        Toast.makeText(this, "选择", Toast.LENGTH_SHORT).show();
+                        openAlbum();
+                        break;
+                    default:
+                        break;
                 }
-            }
+                return false;
+            });
+            popup.show();
         });
 
 
@@ -143,21 +155,6 @@ public class UpdatePhotoActivity extends AppCompatActivity {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
         startActivityForResult(intent,2);//打开相册
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults){
-
-        switch (requestCode){
-            case 1:
-                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    openAlbum();
-                    //Toast.makeText(this,"onRequestPermissionsResult",Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(this,"你拒绝了许可",Toast.LENGTH_LONG).show();
-                }
-                break;
-            default:
-        }
     }
 
     @Override
@@ -256,12 +253,12 @@ public class UpdatePhotoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data) {
         switch (requestCode) {
+
             case 2:
                 if (Build.VERSION.SDK_INT >= 19) {
                     Uri uri=data.getData();
                     path= FileUtils.getPath(this,uri);
                     img=path.split("/")[path.split("/").length-1];
-                    //Toast.makeText(this,"图片地址"+path+"   img"+img,Toast.LENGTH_LONG).show();
                     this.imageview=findViewById(R.id.picture);
                     this.imageview.setImageURI(uri);
                 } else {

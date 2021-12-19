@@ -42,7 +42,6 @@ public class PhotoFragment extends Fragment {
         picture = view.findViewById(R.id.picture);
 
         PermissionsUtils.verifyStoragePermissions(getActivity());//获取权限
-
         takePhoto.setOnClickListener(v -> {
             Intent intent =new Intent(getActivity(), UpdatePhotoActivity.class);
             startActivity(intent);
@@ -50,7 +49,7 @@ public class PhotoFragment extends Fragment {
         history.setOnClickListener(v ->startActivity(new Intent(getActivity(), HistoricalRecordsActivity.class)));
         TextView PageName=view.findViewById(R.id.textview_toolbar);
         PageName.setText("随手拍");
-        ImageButton userhead=  view.findViewById(R.id.imageButton_UserHead_toolbar);
+        ImageView userhead=  view.findViewById(R.id.imageButton_UserHead_toolbar);
         userhead.setOnClickListener(v -> MainActivity.drawerLayout.openDrawer(Gravity.LEFT));
 
         return view;

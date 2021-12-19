@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhomework.Activity.MainActivity
@@ -52,7 +49,7 @@ class ChatFragment : Fragment() {
         userHeadRecyclerView.adapter=userHeadAdapter      //传入适配器
         val pagename:TextView= view.findViewById(R.id.textview_toolbar);
         pagename.setText("通讯录")
-        val userhead:ImageButton=view.findViewById(R.id.imageButton_UserHead_toolbar)
+        val userhead: ImageView =view.findViewById(R.id.imageButton_UserHead_toolbar)
         userhead.setOnClickListener({ v->MainActivity.drawerLayout.openDrawer(Gravity.LEFT) })
         return view
     }

@@ -5,7 +5,7 @@
     android:layout_width="250sp"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img"
         android:layout_width="68dp"
         android:layout_height="68dp"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/icon_head" />
+        android:background="@drawable/icon_head" />
 
     <TextView
         android:id="@+id/title"
