@@ -54,11 +54,14 @@ class ChatFragment : Fragment() {
         return view
     }
     fun initMsg(){
-        msgList.add(Msg("我说句话试试", Msg.LEFT))
+        msgList.add(Msg("我说句话试试", Msg.RIGHT))
         msgList.add(Msg("聊天信息测试", Msg.LEFT))
     }
     fun initHead(){
         userList.add(UserHead(R.drawable.camera,"大宝","",1))
+    }
+    fun reCallMsg(str:String){
+        msgList.add(Msg(str,Msg.LEFT))
     }
 
 }
