@@ -27,25 +27,18 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/title_news"
+                android:text="添加漂流瓶"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageButton_UserHead_toolbar"
+            <ImageButton
+                android:id="@+id/imageButton_left_toolbar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/icon_head" />
+                android:layout_marginLeft="-19dp"
+                android:background="@drawable/left" />
 
-            <ImageView
-                android:id="@+id/imageView_State_toolbar"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_alignBottom="@id/imageButton_UserHead_toolbar"
-                android:layout_toRightOf="@id/imageButton_UserHead_toolbar"
-                android:background="@drawable/icon_online" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
