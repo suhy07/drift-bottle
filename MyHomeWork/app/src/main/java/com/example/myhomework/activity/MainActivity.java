@@ -23,11 +23,17 @@ import com.example.myhomework.utils.PermissionsUtils;
 import com.example.myhomework.databinding.ActivityMainBinding;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     public static DrawerLayout drawerLayout;
     private ActivityMainBinding binding;
 
+// 调用类实现OnGetDataResultListener监听，用于接收Android AR识别SDK回调数据信息
+    /**
+     * 返回景区数据，跳转到景区Activity
+     * @param arSceneryResponse
+     */
 
     public static MainActivity mainActivity;
     @Override

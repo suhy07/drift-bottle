@@ -37,6 +37,9 @@
         android:theme="@style/Theme.MyHomeWork"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ArActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.EvaluteActivity"
             android:exported="false" />
         <activity

@@ -24,6 +24,8 @@ public class NewsFragment extends Fragment {
 
     private View mview;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,9 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mview=inflater.inflate(R.layout.fragment_news, container, false);
-        ImageView userhead=  mview.findViewById(R.id.imageButton_UserHead_toolbar);
+        ImageView userhead = mview.findViewById(R.id.imageButton_UserHead_toolbar);
         RecyclerView recyclerView = mview.findViewById(R.id.recyclerview);
         TextView PageName=mview.findViewById(R.id.textview_toolbar);
-
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));  //设置为竖直向下
         NewItemAdapter newItemAdapter = new NewItemAdapter(getActivity());

@@ -250,7 +250,11 @@ public class UpdatePhotoActivity extends AppCompatActivity {
     public void init_location()
     {
         mBaiduMap.setMyLocationEnabled(true);
-        mLocationClient = new LocationClient(UpdatePhotoActivity.this);
+        try {
+            mLocationClient = new LocationClient(UpdatePhotoActivity.this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //通过LocationClientOption设置LocationClient相关参数
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
