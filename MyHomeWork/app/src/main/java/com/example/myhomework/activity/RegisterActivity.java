@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myhomework.service.UserService;
 import com.example.myhomework.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -28,11 +27,11 @@ public class RegisterActivity extends AppCompatActivity {
         register=binding.button;
 
         register.setOnClickListener(v -> {
-           register1(UID,UserName,UserPassWord1,UserPassWord2);
+           register(UID,UserName,UserPassWord1,UserPassWord2);
 
         });
     }
-    private void register1(EditText UID,EditText UserID1,EditText UserPassWord1,EditText UserPassWord2) {
+    private void register(EditText UID,EditText UserID1,EditText UserPassWord1,EditText UserPassWord2) {
         //TODO注册检查
         String uid=UID.getText().toString().trim();
         String name = UserID1.getText().toString().trim();
@@ -43,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (!password1.equals(password2)) {
             Toast.makeText(this,"两次密码不一致",Toast.LENGTH_LONG).show();
         } else {
-            UserService.Register(uid,name,password1,this);
+
         }
     }
 }

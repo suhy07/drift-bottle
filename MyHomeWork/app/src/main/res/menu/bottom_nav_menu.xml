@@ -10,15 +10,6 @@
         android:id="@+id/page_photo"
         android:icon="@drawable/photo"
         android:title="@string/title_photo" />
-    <item
-        android:id="@+id/page_chat"
-        android:icon="@drawable/chat"
-        android:title="通讯"/>
-
-    <item
-        android:id="@+id/page_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home"   />
     </group>
 
 </menu>
