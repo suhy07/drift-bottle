@@ -8,19 +8,17 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="240dp"
             app:cardCornerRadius="15dp"
             >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/there_is_a_bee"></ImageView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/there_is_a_bee"></ImageView>
         </androidx.cardview.widget.CardView>
-        
         <TextView
             android:layout_width="300dp"
             android:layout_height="35dp"
@@ -45,15 +43,26 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="50dp"
             android:textColor="@color/label_text"
+            android:hint="请输入昵称"></EditText>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="#00FFFFFF"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:textColor="@color/label_text"
             android:hint="请输入密码"></EditText>
 
-        <CheckBox
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:text="记住密码"
-            android:layout_marginTop="40dp"
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="#00FFFFFF"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="50dp"
-            />
+            android:textColor="@color/label_text"
+            android:hint="请再次输入密码"></EditText>
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
@@ -70,22 +79,6 @@
                 android:textSize="20sp" />
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="20dp"
-            android:text="忘记密码"
-            android:textColor="@color/label_text"
-            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
-            android:layout_marginTop="20dp"
-            android:text="没有账号？去注册"
-            android:textColor="#4589D6"
-            android:textSize="16sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
