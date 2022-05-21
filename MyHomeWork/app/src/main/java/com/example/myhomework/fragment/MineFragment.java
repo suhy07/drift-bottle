@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.myhomework.R;
-import com.example.myhomework.databinding.FragmentMapBinding;
 import com.example.myhomework.databinding.FragmentMineBinding;
 
 

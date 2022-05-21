@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.myhomework.R;
-import com.example.myhomework.databinding.ActivityMainBinding;
 import com.example.myhomework.databinding.FragmentMapBinding;
 
 
@@ -17,6 +15,7 @@ public class MapFragment extends Fragment {
     FragmentMapBinding binding;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -24,6 +23,7 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMapBinding.inflate(getLayoutInflater());
+
         return binding.getRoot();
     }
 }
