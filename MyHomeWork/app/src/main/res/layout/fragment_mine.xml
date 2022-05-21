@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.MineFragment"
+    >
+
+    <com.example.myhomework.view.TopBar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/topBar"
+
+        app:background="@drawable/ic_launcher_background"
+        app:leftText="菜单"
+        app:leftTextColor="#666666"
+
+        app:title="未标题"
+        app:titleTextColor="#333333"
+        app:titleTextSize="10sp"
+
+        app:rightBackground="@drawable/ic_launcher_background"
+        app:rightText="菜单"
+        app:rightTextColor="#666666"
+        >
+
+    </com.example.myhomework.view.TopBar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

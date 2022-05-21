@@ -46,15 +46,17 @@
             android:name=".activity.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.MyHomeWork.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
