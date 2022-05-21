@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/page_news">
+    app:startDestination="@+id/page_map">
 
     <fragment
         android:id="@+id/page_map"
@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_map" />
 
     <fragment
-        android:id="@+id/page_photo"
+        android:id="@+id/page_mine"
         android:name="com.example.myhomework.fragment.MineFragment"
         android:label="@string/title_second"
         tools:layout="@layout/fragment_mine" />

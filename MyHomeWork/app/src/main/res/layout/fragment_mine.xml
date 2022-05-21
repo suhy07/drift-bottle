@@ -9,23 +9,15 @@
     >
 
     <com.example.myhomework.view.TopBar
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/topBar"
+        app:back="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="我的主页"
+        tools:ignore="MissingConstraints" />
 
-        app:background="@drawable/ic_launcher_background"
-        app:leftText="菜单"
-        app:leftTextColor="#666666"
-
-        app:title="未标题"
-        app:titleTextColor="#333333"
-        app:titleTextSize="10sp"
-
-        app:rightBackground="@drawable/ic_launcher_background"
-        app:rightText="菜单"
-        app:rightTextColor="#666666"
-        >
-
-    </com.example.myhomework.view.TopBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

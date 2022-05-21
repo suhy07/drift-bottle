@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
     <item
-        android:id="@+id/page_news"
+        android:id="@+id/page_map"
         android:icon="@drawable/map"
         android:title="@string/title_main" />
 
     <item
-        android:id="@+id/page_photo"
+        android:id="@+id/page_mine"
         android:icon="@drawable/user"
         android:title="@string/title_second" />
     </group>

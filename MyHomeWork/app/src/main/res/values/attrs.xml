@@ -5,11 +5,7 @@
         <attr name="titleTextSize" format="dimension"/>
         <attr name="titleTextColor" format="color"/>
         <attr name="background" format="reference"/>
-        <attr name="leftTextColor" format="color"/>
-        <attr name="leftText" format="string"/>
-        <attr name="rightTextColor" format="color"/>
-        <attr name="rightBackground" format="reference"/>
-        <attr name="rightText" format="string"/>
+        <attr name="back" format="boolean"/>
     </declare-styleable>
     <declare-styleable name="RadiusCardView">
         <!--        左上圆角大小-->
