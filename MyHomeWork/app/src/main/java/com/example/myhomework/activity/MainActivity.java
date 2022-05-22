@@ -1,8 +1,9 @@
 package com.example.myhomework.activity;
 
+import static com.example.myhomework.utils.UiUtil.hideActionBar;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -12,7 +13,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.myhomework.R;
-import com.example.myhomework.utils.PermissionsUtils;
+import com.example.myhomework.utils.PermissionsUtil;
 import com.example.myhomework.databinding.ActivityMainBinding;
 
 
@@ -26,23 +27,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        hideActionBar();
-
+        hideActionBar(this);
         AppBarConfiguration mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.page_map,R.id.page_mine)
                 .build();
-        PermissionsUtils.verifyStoragePermissions(this);
+        PermissionsUtil.verifyStoragePermissions(this);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNav, navController);
-    }
-
-    private void hideActionBar(){
-        getWindow().setSoftInputMode(WindowManager.LayoutParams. SOFT_INPUT_ADJUST_NOTHING);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
     }
 }

@@ -47,16 +47,15 @@
             android:name=".activity.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.MyHomeWork.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:exported="true" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" >
         </activity>
 
         <provider
@@ -72,6 +71,9 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ofrmNdIYHObGQLFd5KQc8xYjD8ZTmZHA" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SaveIdPasswordUtils {
+public class SaveIdPasswordUtil {
 
     //保存账号密码到data.xml
     public static boolean saveUserInfo(Context context, String account, String password){

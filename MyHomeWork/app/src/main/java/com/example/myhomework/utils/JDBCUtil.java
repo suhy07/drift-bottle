@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class JDBCUtils {
+public class JDBCUtil {
 
     public static Connection Connection() {
         Connection connection=null;

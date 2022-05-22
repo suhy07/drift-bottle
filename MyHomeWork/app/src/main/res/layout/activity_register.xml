@@ -1,84 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_register">
+    android:background="@color/white"
+    xmlns:app ="http://schemas.android.com/apk/res-auto">
+    xmlns:app ="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <com.example.myhomework.view.RadiusCardView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:rcv_bottomLeftRadiu="30dp"
+            app:rcv_bottomRightRadiu="30dp">
+            <com.example.myhomework.view.GifView
+                android:id="@+id/gif"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/there_is_a_bee" />
+        </com.example.myhomework.view.RadiusCardView>
 
-    <EditText
-        android:id="@+id/uid"
-        android:layout_width="282dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="276dp"
-        android:hint="账号/邮箱"
-        android:maxLines="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:text="CAMPUS DRIFTING BOTTLE"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+        <EditText
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="282dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="276dp"
-        android:hint="用户名"
-        android:maxLines="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154" />
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="282dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="360dp"
-        android:hint="密码"
-        android:inputType="textPassword"
-        android:maxLines="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+            android:id="@+id/id"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_background"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:textColor="@color/label_text"
+            android:hint="请输入邮箱"
+            android:textAlignment="center"/>
 
-    <EditText
-        android:id="@+id/password2"
-        android:layout_width="287dp"
-        android:layout_height="56dp"
-        android:editable="true"
-        android:hint="确认密码"
-        android:inputType="textPassword"
-        android:maxLines="2"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684"
-        tools:ignore="Deprecated" />
+        <EditText
+            android:id="@+id/nickname"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_background"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/label_text"
+            android:hint="请输入昵称" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="253dp"
-        android:layout_height="54dp"
-        android:text="注册"
-        android:backgroundTint="#F4F4F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_background"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:password="true"
+            android:textAlignment="center"
+            android:textColor="@color/label_text"
+            android:hint="请输入密码" />
 
+        <EditText
+            android:id="@+id/passwordQuery"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_background"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:password="true"
+            android:textAlignment="center"
+            android:textColor="@color/label_text"
+            android:hint="请再次输入密码" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="310dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="35dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="35dp">
+            <Button
+                android:id="@+id/finish"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryVariant"
+                android:text="完   成"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

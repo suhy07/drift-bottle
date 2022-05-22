@@ -1,116 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app ="http://schemas.android.com/apk/res-auto">
+    xmlns:app ="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
+        <com.example.myhomework.view.RadiusCardView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:rcv_bottomLeftRadiu="30dp"
+            app:rcv_bottomRightRadiu="30dp">
+            <com.example.myhomework.view.GifView
+                android:id="@+id/gif"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/there_is_a_bee" />
+        </com.example.myhomework.view.RadiusCardView>
 
-    tools:context=".activity.LoginActivity">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:text="CAMPUS DRIFTING BOTTLE"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/id"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_background"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:textAlignment="center"
+            android:textColor="@color/label_text"
+            android:hint="请输入账号" />
 
-    <ImageView
-        android:id="@+id/bg_login_background_LoginActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="900dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_login_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:background="@drawable/edit_background"
+            android:hint="请输入密码"
+            android:password="true"
+            android:textColor="@color/label_text" />
 
-    <EditText
-        android:id="@+id/editText_UserID_LoginActivity"
-        android:layout_width="282dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="368dp"
-        android:hint="账号"
-        android:maxLines="2"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:text="记住密码"
+            android:textColorLink="@color/colorPrimaryVariant" />
 
-    <EditText
-        android:id="@+id/editText_UserPassWord_LoginActivity"
-        android:layout_width="282dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="77dp"
-        android:editable="true"
-        android:inputType="textPassword"
-        android:hint="密码"
-        android:maxLines="2"
-        android:drawableRight="@drawable/eye"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button_Login_LoginActivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_UserID_LoginActivity"
-        app:layout_constraintVertical_bias="0.736"
-        tools:ignore="Deprecated" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="310dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="35dp">
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryVariant"
+                android:text="登   陆"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/button_Login_LoginActivity"
-        android:layout_width="256dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#F4F4F4"
-        android:text="登录"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        <Button
+            android:id="@+id/forgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:text="忘记密码"
+            android:layout_gravity="center"
+            android:background="?android:selectableItemBackground"
+            android:textColor="@color/label_text"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/button_Register_LoginActivity"
-        android:layout_width="256dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#F4F4F4"
-        android:text="注册"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试用例：ID=221900122，PASSWORD=test"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <CheckBox
-        android:id="@+id/checkBox_LoginActivity"
-        android:layout_width="282dp"
-        android:layout_height="48dp"
-        android:checked="true"
-        android:text="记住账号密码"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+        <Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="没有账号？去注册"
+            android:background="?android:selectableItemBackground"
+            android:textColor="#4589D6"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView"
+        android:id="@+id/lottie"
         android:layout_width="wrap_content"
         android:layout_height="500dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/photograph" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

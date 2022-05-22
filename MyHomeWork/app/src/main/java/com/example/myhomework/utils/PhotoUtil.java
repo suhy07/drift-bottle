@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PhotoUtils {
+public class PhotoUtil {
 
     public static void openAlbum(Activity activity) {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");

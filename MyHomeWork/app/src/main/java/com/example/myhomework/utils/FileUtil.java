@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 
-public class FileUtils {
+public class FileUtil {
 
 
     public static String getPath(final Context context, final Uri uri) {

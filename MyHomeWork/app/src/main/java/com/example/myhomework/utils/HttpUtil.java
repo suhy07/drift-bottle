@@ -18,7 +18,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class HttpUtils {
+public class HttpUtil {
     private static void HttpUtil(){}
     public static String Post_file(String url,String filename,String pathname){
         OkHttpClient client = new OkHttpClient().newBuilder()

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myhomework.databinding.FragmentMineBinding;
+import com.example.myhomework.global.GlobalMemory;
 
 
 public class MineFragment extends Fragment {
@@ -21,12 +22,18 @@ public class MineFragment extends Fragment {
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+        binding.userName.setText(GlobalMemory.NickName);
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMineBinding.inflate(getLayoutInflater());
         binding.topBar.setTopBarClickListener(()->{
             //TODO addOnclick
         });
+        binding.userName.setText(GlobalMemory.NickName);
         return binding.getRoot();
     }
 }

@@ -36,6 +36,7 @@
             app:rcv_topLeftRadiu="20dp"
             app:rcv_topRightRadiu="20dp">
 
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_nav"
                 android:layout_width="match_parent"
@@ -55,20 +56,29 @@
 
         </com.example.myhomework.view.RadiusCardView>
 
-    <ImageButton
-        android:id="@+id/btn_add"
+    <com.example.myhomework.view.RadiusCardView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@color/transparent"
-        android:scaleType="fitXY"
-        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97"
-        app:srcCompat="@drawable/add_btn" />
+        app:rcv_bottomRightRadiu="140dp"
+        app:rcv_bottomLeftRadiu="140dp"
+        app:rcv_topLeftRadiu="140dp"
+        app:rcv_topRightRadiu="140dp">
+        <ImageButton
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
+            android:scaleType="fitXY"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/add_btn" />
+    </com.example.myhomework.view.RadiusCardView>
+
 
 
 

@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/71962/Desktop/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_add_bottle.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/71962/Desktop/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_ar.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/71962/Desktop/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_evalute.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/71962/Desktop/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_historical_records.xml" value="0.18614130434782608" />
@@ -75,13 +74,15 @@
         <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/fragment_photo.xml" value="0.16964285714285715" />
         <entry key="..\:/Users/suhy/Desktop/github/Android/MyHomeWork/app/src/main/res/layout/userhead_item.xml" value="0.14791666666666667" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/drawable/arrow.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/font/swanky_and_moo_moo.xml" value="0.2171875" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_ar.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_evalute.xml" value="0.2" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_historical_records.xml" value="0.13858695652173914" />
-        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_login1.xml" value="0.176" />
-        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_register.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_main.xml" value="0.536" />
+        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_register.xml" value="0.176" />
+        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_register1.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_update_photo.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/activity_user_information.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/add_message.xml" value="0.4" />
@@ -93,6 +94,7 @@
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/fragment_chat.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/fragment_home.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/fragment_map.xml" value="0.1111111111111111" />
+        <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/fragment_mine.xml" value="0.6" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/fragment_news.xml" value="0.11822916666666666" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/fragment_photo.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/suhy/Desktop/github/drift-bottle/MyHomeWork/app/src/main/res/layout/historyrecord_item.xml" value="0.13858695652173914" />

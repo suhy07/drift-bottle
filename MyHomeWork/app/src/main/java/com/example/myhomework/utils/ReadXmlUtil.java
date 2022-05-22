@@ -8,9 +8,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 
-public class ReadXmlUtils {
+public class ReadXmlUtil {
 
-    private static ReadXmlUtils readXmlUtil=new ReadXmlUtils();
+    private static ReadXmlUtil readXmlUtil=new ReadXmlUtil();
 
     private static void ReadXmlUtil(){
 

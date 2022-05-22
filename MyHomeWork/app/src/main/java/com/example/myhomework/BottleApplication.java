@@ -1,6 +1,9 @@
 package com.example.myhomework;
 
 import android.app.Application;
+import android.view.WindowManager;
+
+import androidx.appcompat.app.ActionBar;
 
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;

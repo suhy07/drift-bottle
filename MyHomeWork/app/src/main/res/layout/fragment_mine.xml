@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragment.MineFragment"
     >
 
@@ -12,12 +13,215 @@
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:back="true"
+        app:back="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="我的主页"
-        tools:ignore="MissingConstraints" />
+         />
+
+    <com.example.myhomework.view.RadiusCardView
+        android:id="@+id/radiusCardView2"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:layout_constraintVertical_bias="0.0"
+        app:rcv_bottomLeftRadiu="40dp"
+        app:rcv_bottomRightRadiu="40dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="0dp"
+            app:cardBackgroundColor="#DBF2FF">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_head"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/icon_head"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.231"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的超人"
+                    android:textColor="#2974A6"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.696"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.372" />
+
+                <TextView
+                    android:id="@+id/user_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Lv.1 社区萌新"
+                    android:textColor="#2792D9"
+                    android:textSize="15sp"
+
+                    android:textStyle="bold"
+
+                    app:layout_constraintStart_toStartOf="@+id/user_name"
+                    app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </com.example.myhomework.view.RadiusCardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radiusCardView2">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            >
+        <TableRow>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+                <ImageButton
+                    android:id="@+id/draft"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?android:selectableItemBackground"
+                    android:elevation="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_draft"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="草稿箱"
+                    android:textColor="#8C8383"
+                    android:layout_gravity="center"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+                <ImageButton
+                    android:id="@+id/bottle"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?android:selectableItemBackground"
+                    android:elevation="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_draft"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="漂流瓶"
+                    android:textColor="#8C8383"
+                    android:layout_gravity="center"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+                <ImageButton
+                    android:id="@+id/board"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?android:selectableItemBackground"
+                    android:elevation="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_draft"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="留言板"
+                    android:textColor="#8C8383"
+                    android:layout_gravity="center"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+        </TableRow>
+
+
+        </TableLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="0dp">
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:background="?android:selectableItemBackground"
+                android:text="修改密码"
+                android:textAlignment="textStart" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#BBBBBB"/>
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:layout_marginTop="20dp"
+                android:background="?android:selectableItemBackground"
+                android:text="退出登陆"
+                android:textAlignment="textStart" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#BBBBBB"/>
+        </TableLayout>
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

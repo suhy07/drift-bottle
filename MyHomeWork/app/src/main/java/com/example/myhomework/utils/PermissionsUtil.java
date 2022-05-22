@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 
 import androidx.core.app.ActivityCompat;
 
-public class PermissionsUtils {
+public class PermissionsUtil {
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
