@@ -1,10 +1,14 @@
 package com.example.myhomework.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myhomework.BottleApplication;
 
 public class UiUtil {
     public static void hideActionBar(AppCompatActivity activity){
@@ -14,5 +18,8 @@ public class UiUtil {
         if (actionBar != null) {
             actionBar.hide();
         }
+    }
+    public static void ShowToast(Context context, String msg){
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 }

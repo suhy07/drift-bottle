@@ -10,12 +10,15 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.example.myhomework.R;
 import com.example.myhomework.fragment.MapFragment;
+import com.example.myhomework.service.SDKReceiver;
 import com.example.myhomework.utils.PermissionsUtil;
 import com.example.myhomework.databinding.ActivityMainBinding;
 
@@ -44,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNav, navController);
+
+        /**动态注册广播*/
+        IntentFilter iFilter = new IntentFilter();
+        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
+        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK);
+        SDKReceiver mReceiver = new SDKReceiver();
+        registerReceiver(mReceiver, iFilter);
 
         viewList.add(binding.bubble);
         viewList.add(binding.view);

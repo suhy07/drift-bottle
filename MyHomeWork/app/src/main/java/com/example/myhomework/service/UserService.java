@@ -38,7 +38,6 @@ public class UserService extends Service {
                 if(resultSet.next()){
                     GlobalMemory.NickName = resultSet.getString("nickname");
                     activity.startActivity(new Intent(activity, MainActivity.class));
-                    activity.runOnUiThread(()->   Toast.makeText(activity,"登陆成功",Toast.LENGTH_LONG).show());
                     GlobalMemory.PrintLog(TAG+"登陆成功");
                     activity.finish();
                 }else{

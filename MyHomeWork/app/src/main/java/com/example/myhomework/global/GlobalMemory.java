@@ -19,6 +19,7 @@ public class GlobalMemory {
     public static List<MapRecord> MapRecordList = new ArrayList<>();
     public static double Longitude = 1;
     public static double Latitude = 1;
+    public static String Address = "未知地点";
     public static void PrintLog(String msg){
         Log.d(TAG,msg);
     }

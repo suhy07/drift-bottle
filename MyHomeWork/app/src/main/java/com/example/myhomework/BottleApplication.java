@@ -1,7 +1,9 @@
 package com.example.myhomework;
 
 import android.app.Application;
+import android.os.Handler;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 

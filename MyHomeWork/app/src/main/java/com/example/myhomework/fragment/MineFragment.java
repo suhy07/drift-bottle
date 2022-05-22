@@ -22,11 +22,6 @@ public class MineFragment extends Fragment {
     }
 
     @Override
-    public void onResume(){
-        super.onResume();
-        binding.userName.setText(GlobalMemory.NickName);
-    }
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMineBinding.inflate(getLayoutInflater());

@@ -1,13 +1,18 @@
 package com.example.myhomework.service;
 
+import static com.example.myhomework.global.GlobalMemory.Address;
+import static com.example.myhomework.global.GlobalMemory.Latitude;
+import static com.example.myhomework.global.GlobalMemory.Longitude;
 import static com.example.myhomework.global.GlobalMemory.TAG;
 import static com.example.myhomework.global.GlobalMemory.MapRecordList;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -16,6 +21,8 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.myhomework.R;
+import com.example.myhomework.activity.LoginActivity;
+import com.example.myhomework.activity.MainActivity;
 import com.example.myhomework.bean.MapRecord;
 import com.example.myhomework.fragment.MapFragment;
 import com.example.myhomework.global.GlobalMemory;
@@ -34,7 +41,7 @@ public class MapService extends Service {
         return null;
     }
 
-    public static void refreshPointList(BaiduMap baiduMap){
+    public static void refreshPointList(BaiduMap baiduMap, RecyclerView.Adapter adapter){
         new Thread(() -> {
             List<MapRecord> mapRecords = new ArrayList<>();
             Connection connection = JDBCUtil.Connection();
@@ -52,10 +59,6 @@ public class MapService extends Service {
                             resultSet.getDouble("y")
                     );
                     mapRecords.add(mapRecord);
-                }
-                MapRecordList.clear();
-                for(MapRecord mapRecord: mapRecords){
-                    MapRecordList.add(mapRecord);
                     //定义Maker坐标点
                     LatLng point = new LatLng(mapRecord.getX(), mapRecord.getY());
                     //构建Marker图标
@@ -64,10 +67,10 @@ public class MapService extends Service {
                     switch (mapRecord.getRecordType()){
                         case Board:
                             bitmap= BitmapDescriptorFactory
-                                .fromResource(R.drawable.board); break;
+                                    .fromResource(R.drawable.board); break;
                         case Bottle:
                             bitmap= BitmapDescriptorFactory
-                                .fromResource(R.drawable.bottle); break;
+                                    .fromResource(R.drawable.bottle); break;
                     }
                     //构建MarkerOption，用于在地图上添加Marker
                     OverlayOptions option = new MarkerOptions()
@@ -81,7 +84,14 @@ public class MapService extends Service {
                     //在地图上添加Marker，并显示
                     baiduMap.addOverlay(option);
                 }
-                MapFragment.callBack();
+                MapRecordList.clear();
+                for(MapRecord mapRecord: mapRecords){
+                    MapRecordList.add(mapRecord);
+                }
+                new MainActivity().runOnUiThread(()->{
+                    adapter.notifyDataSetChanged();
+                });
+//
             }catch (Exception e){
                 GlobalMemory.PrintLog(TAG+e.getMessage());
                 GlobalMemory.PrintLog(TAG+sql);
@@ -89,7 +99,20 @@ public class MapService extends Service {
         }).start();
     }
 
-    public static void addBottle(){
-
+    public static void addBottle(String title,String describe,String author){
+        new Thread(() -> {
+            Connection connection = JDBCUtil.Connection();
+            String sql = "INSERT into user values('null',"+Longitude+","+Latitude+",'"+title+"','"
+                    +Address+"','"+describe+"','Bottle','"+author+"')";
+            PreparedStatement preparedStatement;
+            ResultSet resultSet;
+            try {
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.executeUpdate();
+            }catch (Exception e){
+                GlobalMemory.PrintLog(TAG+e.getMessage());
+                GlobalMemory.PrintLog(TAG+sql);
+            }
+        }).start();
     }
 }
