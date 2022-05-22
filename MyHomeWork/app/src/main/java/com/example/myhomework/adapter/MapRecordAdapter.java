@@ -53,9 +53,9 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         d=R*Math.acos(Math.cos(Longitude) * Math.cos(mapRecord.getY())*Math.cos(Latitude - mapRecord.getX())
                 +Math.sin(Longitude) * Math.sin(mapRecord.getY()));
         if(d > 1){
-            itemMaprecordBinding.distance.setText(d + "km");
+            itemMaprecordBinding.distance.setText((String)(d+"").substring(0,8)+"km");
         }else{
-            itemMaprecordBinding.distance.setText(d + "m");
+            itemMaprecordBinding.distance.setText((String)(d+"").substring(0,8)+"m");
         }
     }
     @Override

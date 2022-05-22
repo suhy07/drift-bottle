@@ -2,6 +2,7 @@ package com.example.myhomework.global;
 
 import android.util.Log;
 
+import com.baidu.location.Poi;
 import com.example.myhomework.bean.MapRecord;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class GlobalMemory {
     public static double Longitude = 1;
     public static double Latitude = 1;
     public static String Address = "未知地点";
+    public static List<String> PoiNameList = new ArrayList<>();
+    public static List<Poi> PoiList = new ArrayList<>();
     public static void PrintLog(String msg){
         Log.d(TAG,msg);
     }

@@ -6,6 +6,7 @@ import static com.example.myhomework.global.GlobalMemory.Longitude;
 import static com.example.myhomework.global.GlobalMemory.TAG;
 import static com.example.myhomework.global.GlobalMemory.MapRecordList;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -99,11 +100,11 @@ public class MapService extends Service {
         }).start();
     }
 
-    public static void addBottle(String title, String describe, String author, Context context){
+    public static void addBottle(double x, double y, String title, String address, String describe, String author, Activity context) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "INSERT into point values(null,"+Latitude+","+Longitude+",'"+title+"','"
-                    +Address+"','"+describe+"','Bottle','"+author+"')";
+            String sql = "INSERT into point values(null,"+x+","+y+",'"+title+"','"
+                    +address+"','"+describe+"','Board','"+author+"')";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             try {
@@ -113,14 +114,15 @@ public class MapService extends Service {
                 GlobalMemory.PrintLog(TAG+e.getMessage());
                 GlobalMemory.PrintLog(TAG+sql);
             }
-            UiUtil.ShowToast(context,"添加成功");
+            context.runOnUiThread(()->UiUtil.ShowToast(context,"添加成功"));
+            context.finish();
         }).start();
     }
-    public static void addBoard(String title, String describe, String author, Context context) {
+    public static void addBoard(double x, double y, String title, String address, String describe, String author, Activity context) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "INSERT into point values(null,"+Latitude+","+Longitude+",'"+title+"','"
-                    +Address+"','"+describe+"','Board','"+author+"')";
+            String sql = "INSERT into point values(null,"+x+","+y+",'"+title+"','"
+                    +address+"','"+describe+"','Board','"+author+"')";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             try {
@@ -130,7 +132,8 @@ public class MapService extends Service {
                 GlobalMemory.PrintLog(TAG+e.getMessage());
                 GlobalMemory.PrintLog(TAG+sql);
             }
-            UiUtil.ShowToast(context,"添加成功");
+            context.runOnUiThread(()->UiUtil.ShowToast(context,"添加成功"));
+            context.finish();
         }).start();
     }
 

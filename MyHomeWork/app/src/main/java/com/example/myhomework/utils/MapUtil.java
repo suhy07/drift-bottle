@@ -3,11 +3,12 @@ package com.example.myhomework.utils;
 import static com.example.myhomework.global.GlobalMemory.Address;
 import static com.example.myhomework.global.GlobalMemory.Latitude;
 import static com.example.myhomework.global.GlobalMemory.Longitude;
+import static com.example.myhomework.global.GlobalMemory.PoiList;
+import static com.example.myhomework.global.GlobalMemory.PoiNameList;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -22,7 +23,6 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.example.myhomework.R;
-import com.example.myhomework.fragment.MapFragment;
 
 public class MapUtil {
      public static void initLocationOption(BaiduMap mBaiduMap, Context context, View mapView) {
@@ -77,13 +77,18 @@ public class MapUtil {
              //通过LocationClientOption设置LocationClient相关参数
              LocationClientOption option = new LocationClientOption();
              option.setOpenGps(true); // 打开gps
-             option.setCoorType("bd09ll"); // 设置坐标类型
+             option.setCoorType("gcj02"); // 设置坐标类型
              option.setScanSpan(1100);
              option.setNeedDeviceDirect(true);
+             option.setIsNeedAddress(true);
+             option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+             option.setIsNeedAltitude(true);
+             option.setIsNeedLocationDescribe(true);
+             option.setIsNeedLocationPoiList(true);
              //设置locationClientOption
              mLocationClient.setLocOption(option);
              //注册LocationListener监听器
-             MyLocationListener myLocationListener = new MyLocationListener(mBaiduMap, mapView);
+             MyLocationListener myLocationListener = new MyLocationListener(mBaiduMap, mapView,context);
              mLocationClient.registerLocationListener(myLocationListener);
              //开启地图定位图层
              mLocationClient.start();
@@ -103,7 +108,8 @@ public class MapUtil {
     static class MyLocationListener extends BDAbstractLocationListener {
         BaiduMap mBaiduMap;
         View view;
-        MyLocationListener(BaiduMap mBaiduMap,View view){
+        Context context;
+        MyLocationListener(BaiduMap mBaiduMap,View view, Context context){
             this.mBaiduMap = mBaiduMap;
             this.view = view;
         }
@@ -127,12 +133,14 @@ public class MapUtil {
             //获取定位类型、定位错误返回码，具体信息可参照类参考中BDLocation类中的说明
             String locationDescribe = location.getLocationDescribe();
             Address = locationDescribe;
-            Log.d("TAGTAG",locationDescribe+"");
-            Log.d("TAGTAG",location.getTown()+"");
-            Log.d("TAGTAG",location.getStreet()+"");
-            Log.d("TAGTAG",location.getCity()+"");
-            Log.d("TAGTAG",location.getProvince()+"");
-            Log.d("TAGTAG","详细地址"+location.getAddrStr()+"");
+
+            Log.d("TAGTAG",location.toString());
+            Log.d("TAGTAG","描述："+locationDescribe+"");
+            Log.d("TAGTAG","乡镇: "+location.getTown()+"");
+            Log.d("TAGTAG","街道："+location.getStreet()+"");
+            Log.d("TAGTAG","城市："+location.getCity()+"");
+            Log.d("TAGTAG","省份："+location.getProvince()+"");
+            Log.d("TAGTAG","详细地址："+location.getAddrStr()+"");
             //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
             //以下只列举部分获取周边POI信息相关的结果
             //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
@@ -142,16 +150,18 @@ public class MapUtil {
                 String poiName = poi.getName();    //获取POI名称
                 String poiTags = poi.getTags();   //获取POI类型
                 String poiAddr = poi.getAddr();    //获取POI地址 //获取周边POI信息
-
+                PoiNameList.clear();
                 for (Poi _poi: location.getPoiList()){
-                    Log.d("TAGTAG","poi"+_poi.getAddr()+"");
+                    Log.d("TAGTAG","poi"+_poi.getName()+"");
+                    PoiList.add(_poi);
+                    PoiNameList.add(_poi.getName());
                 }
             }
 
-//            PoiRegion poiRegion= location.getPoiRegion();
-//            String poiDerectionDesc = poiRegion.getDerectionDesc();    //获取PoiRegion位置关系
-//            String poiRegionName = poiRegion.getName();    //获取PoiRegion名称
-//            String _poiTags = poiRegion.getTags();    //获取PoiRegion类型
+            PoiRegion poiRegion= location.getPoiRegion();
+            String poiDerectionDesc = poiRegion.getDerectionDesc();    //获取PoiRegion位置关系
+            String poiRegionName = poiRegion.getName();    //获取PoiRegion名称
+            String _poiTags = poiRegion.getTags();    //获取PoiRegion类型
 
             int errorCode = location.getLocType();
             if (location == null || view == null)
