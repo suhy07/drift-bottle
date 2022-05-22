@@ -48,15 +48,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
                 android:text="投放位置"
                 android:textColor="@color/label_text"
                 android:textSize="16sp" />
 
         </androidx.cardview.widget.CardView>
 
-        <ImageView
+        <com.baidu.mapapi.map.MapView
             android:layout_width="340dp"
             android:layout_height="160dp"
             android:layout_marginLeft="40dp"
