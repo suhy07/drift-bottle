@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhomework.databinding.ActivityAddMessageBinding;
 import com.example.myhomework.fragment.MapFragment;
+import com.example.myhomework.utils.UiUtil;
 
 
 public class AddMessageActivity extends AppCompatActivity {
@@ -17,9 +18,11 @@ public class AddMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddMessageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        UiUtil.hideActionBar(this);
         binding.topBar.setTopBarClickListener(() -> {
-            Intent intent=new Intent(AddMessageActivity.this, MapFragment.class);
+            Intent intent=new Intent(AddMessageActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
             //TODO addOnclick
         });
     }

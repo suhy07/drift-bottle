@@ -57,6 +57,7 @@
         </com.example.myhomework.view.RadiusCardView>
 
     <com.example.myhomework.view.RadiusCardView
+        android:id="@+id/radiusCardView3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,10 +66,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97"
-        app:rcv_bottomRightRadiu="140dp"
         app:rcv_bottomLeftRadiu="140dp"
+        app:rcv_bottomRightRadiu="140dp"
         app:rcv_topLeftRadiu="140dp"
         app:rcv_topRightRadiu="140dp">
+
         <ImageButton
             android:id="@+id/btn_add"
             android:layout_width="match_parent"
@@ -80,6 +82,63 @@
     </com.example.myhomework.view.RadiusCardView>
 
 
+    <ImageView
+        android:id="@+id/bubble"
+        android:layout_width="161dp"
+        android:layout_height="111dp"
+        android:alpha="0.9"
+        android:elevation="2dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bubble"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_activity_main"
+        app:layout_constraintVertical_bias="0.841" />
 
+    <ImageButton
+        android:id="@+id/board_btn"
+        android:layout_width="47dp"
+        android:layout_height="53dp"
+        android:alpha="0.9"
+        android:background="?android:selectableItemBackground"
+        android:elevation="3dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/board"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.809" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="2dp"
+        android:layout_height="55dp"
+        android:elevation="3dp"
+        android:background="#F2F2F2F2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812" />
+
+    <ImageButton
+        android:id="@+id/bottle_btn"
+        android:layout_width="47dp"
+        android:layout_height="53dp"
+        android:alpha="0.9"
+        android:background="?android:selectableItemBackground"
+        android:elevation="3dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bottle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.809" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

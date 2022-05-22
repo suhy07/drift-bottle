@@ -2,6 +2,11 @@ package com.example.myhomework.global;
 
 import android.util.Log;
 
+import com.example.myhomework.bean.MapRecord;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GlobalMemory {
     public static String TAG="$%Bottle%$";
     public static String FileServerUri="http://47.98.173.217:8080";
@@ -11,6 +16,9 @@ public class GlobalMemory {
     public static String MysqlUser = "bottle";
     public static String MysqlPassword = "Bottle@123zxc";
     public static String NickName = "我的超人";
+    public static List<MapRecord> MapRecordList = new ArrayList<>();
+    public static double Longitude = 1;
+    public static double Latitude = 1;
     public static void PrintLog(String msg){
         Log.d(TAG,msg);
     }

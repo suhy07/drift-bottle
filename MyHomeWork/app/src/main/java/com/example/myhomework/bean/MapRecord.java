@@ -1,16 +1,39 @@
 package com.example.myhomework.bean;
 
+import androidx.annotation.NonNull;
+
 public class MapRecord {
     public enum RecordType{
-        Bottle, Board
+        Bottle("Bottle"), Board("Board");
+        private String name;
+
+        RecordType(String name){
+            this.name = name;
+        }
+        @NonNull
+        @Override
+        public String toString() {
+            return this.name;
+        }
     }
     private RecordType recordType;
     private String address;
-    private float x;
-    private float y;
+    private double x;
+    private double y;
 
-    public MapRecord(RecordType recordType, String address, float x, float y) {
+    public MapRecord(RecordType recordType, String address, double x, double y) {
         this.recordType = recordType;
+        this.address = address;
+        this.x = x;
+        this.y = y;
+    }
+
+
+    public MapRecord(String recordType, String address, double x, double y) {
+        if(recordType.equals(RecordType.Bottle.name))
+            this.recordType = RecordType.Bottle;
+        else
+            this.recordType = RecordType.Board;
         this.address = address;
         this.x = x;
         this.y = y;
@@ -32,19 +55,19 @@ public class MapRecord {
         this.address = address;
     }
 
-    public float getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(double y) {
         this.y = y;
     }
 }

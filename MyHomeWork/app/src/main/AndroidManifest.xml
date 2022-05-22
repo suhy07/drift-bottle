@@ -37,9 +37,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyHomeWork"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".activity.ArActivity"
-            android:exported="false" />
+
         <activity
             android:name=".activity.RegisterActivity"
             android:exported="true" />
@@ -57,7 +55,16 @@
             android:name=".activity.MainActivity"
             android:exported="true" >
         </activity>
-
+        <activity
+            android:name=".activity.AddMessageActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.AddBottleActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+        </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.myhomework.fileprovider"

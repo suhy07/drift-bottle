@@ -1,9 +1,15 @@
 package com.example.myhomework.fragment;
 
+import static com.example.myhomework.global.GlobalMemory.Latitude;
+import static com.example.myhomework.global.GlobalMemory.Longitude;
+import static com.example.myhomework.global.GlobalMemory.MapRecordList;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,26 +19,26 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.model.LatLng;
 import com.example.myhomework.R;
 import com.example.myhomework.adapter.MapRecordAdapter;
-import com.example.myhomework.bean.MapRecord;
 import com.example.myhomework.databinding.FragmentMapBinding;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.myhomework.service.MapService;
 
 
 public class MapFragment extends Fragment {
 
     FragmentMapBinding binding;
     private LocationClient mLocationClient;
-
+    static MapRecordAdapter mapRecordAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -66,22 +72,12 @@ public class MapFragment extends Fragment {
 
         initLocationOption();
         initRecycleView();
-
+        initPoint();
         return binding.getRoot();
     }
 
-    List<MapRecord> mapRecords = new ArrayList<>();
     private void initRecycleView() {
-
-        mapRecords.add(new MapRecord(MapRecord.RecordType.Board,"公园大道",0,0));
-        mapRecords.add(new MapRecord(MapRecord.RecordType.Bottle,"公园大道",0,0));
-        mapRecords.add(new MapRecord(MapRecord.RecordType.Board,"公园大道",0,0));
-        mapRecords.add(new MapRecord(MapRecord.RecordType.Bottle,"公园大道",0,0));
-        mapRecords.add(new MapRecord(MapRecord.RecordType.Board,"公园大道",0,0));
-        mapRecords.add(new MapRecord(MapRecord.RecordType.Bottle,"公园大道",0,0));
-
-        MapRecordAdapter mapRecordAdapter = new MapRecordAdapter(mapRecords);
-
+        mapRecordAdapter = new MapRecordAdapter(MapRecordList);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(mapRecordAdapter);
     }
@@ -90,9 +86,17 @@ public class MapFragment extends Fragment {
     /**
      * 初始化定位参数配置
      */
+    private void initPoint(){
+        MapService.refreshPointList(mBaiduMap);
+    }
 
     private void initLocationOption() {
-//定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
+        mBaiduMap = binding.map.getMap();
+
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.zoom(18f);
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+////定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
 //        LocationClient locationClient = new LocationClient(getActivity().getApplication().getApplicationContext());
 ////声明LocationClient类实例并配置定位参数
 //        LocationClientOption locationOption = new LocationClientOption();
@@ -133,20 +137,14 @@ public class MapFragment extends Fragment {
 //        locationClient.setLocOption(locationOption);
 ////开始定位
 //        locationClient.start();
-
-        mBaiduMap = binding.map.getMap();
-
-        MapStatus.Builder builder = new MapStatus.Builder();
-        builder.zoom(18f);
-        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-
         mBaiduMap.setMyLocationEnabled(true);
         mLocationClient = new LocationClient(getContext());
         //通过LocationClientOption设置LocationClient相关参数
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
-        option.setScanSpan(1000);
+        option.setScanSpan(1100);
+        option.setNeedDeviceDirect(true);
         //设置locationClientOption
         mLocationClient.setLocOption(option);
         //注册LocationListener监听器
@@ -169,11 +167,15 @@ public class MapFragment extends Fragment {
             //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
             //以下只列举部分获取经纬度相关（常用）的结果信息
             //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
-
             //获取纬度信息
             double latitude = location.getLatitude();
+            Latitude = latitude;
+            Log.d("TAGTAG",latitude+"");
             //获取经度信息
             double longitude = location.getLongitude();
+            Longitude = longitude;
+            Log.d("TAGTAG",longitude+"");
+            Toast.makeText(getContext(),latitude+","+longitude,Toast.LENGTH_LONG).show();
             //获取定位精度，默认值为0.0f
             float radius = location.getRadius();
             //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
@@ -191,6 +193,9 @@ public class MapFragment extends Fragment {
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
         }
+    }
 
+    public static void callBack(){
+        mapRecordAdapter.notifyDataSetChanged();
     }
 }

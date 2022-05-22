@@ -1,5 +1,8 @@
 package com.example.myhomework.adapter;
 
+import static com.example.myhomework.global.GlobalMemory.Latitude;
+import static com.example.myhomework.global.GlobalMemory.Longitude;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +49,14 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         }else{
             itemMaprecordBinding.imageView.setImageResource(R.drawable.bottle);
         }
-        itemMaprecordBinding.distance.setText("200m");
+        double d,R = 6371;
+        d=R*Math.acos(Math.cos(Longitude) * Math.cos(mapRecord.getY())*Math.cos(Latitude - mapRecord.getX())
+                +Math.sin(Longitude) * Math.sin(mapRecord.getY()));
+        if(d > 1){
+            itemMaprecordBinding.distance.setText(d + "km");
+        }else{
+            itemMaprecordBinding.distance.setText(d + "m");
+        }
     }
     @Override
     public int getItemCount(){

@@ -30,9 +30,6 @@ public class MineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMineBinding.inflate(getLayoutInflater());
-        binding.topBar.setTopBarClickListener(()->{
-            //TODO addOnclick
-        });
         binding.userName.setText(GlobalMemory.NickName);
         return binding.getRoot();
     }
