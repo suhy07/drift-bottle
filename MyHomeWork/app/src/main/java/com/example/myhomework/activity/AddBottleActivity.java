@@ -10,10 +10,7 @@ import android.text.TextUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baidu.mapapi.map.BaiduMap;
-import com.example.myhomework.BottleApplication;
 import com.example.myhomework.databinding.ActivityAddBottleBinding;
-import com.example.myhomework.fragment.MapFragment;
-import com.example.myhomework.global.GlobalMemory;
 import com.example.myhomework.service.MapService;
 import com.example.myhomework.utils.MapUtil;
 import com.example.myhomework.utils.UiUtil;
@@ -49,7 +46,8 @@ public class AddBottleActivity extends AppCompatActivity {
 
             if(binding.switchAnon.isChecked())
                 author = "匿名";
-            MapService.addBottle(title, describe, author);
+            MapService.addBottle(title, describe, author, this);
+            finish();
         });
     }
 }

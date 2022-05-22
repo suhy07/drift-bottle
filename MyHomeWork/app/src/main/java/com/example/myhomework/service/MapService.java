@@ -7,9 +7,9 @@ import static com.example.myhomework.global.GlobalMemory.TAG;
 import static com.example.myhomework.global.GlobalMemory.MapRecordList;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,12 +21,11 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.myhomework.R;
-import com.example.myhomework.activity.LoginActivity;
 import com.example.myhomework.activity.MainActivity;
 import com.example.myhomework.bean.MapRecord;
-import com.example.myhomework.fragment.MapFragment;
 import com.example.myhomework.global.GlobalMemory;
 import com.example.myhomework.utils.JDBCUtil;
+import com.example.myhomework.utils.UiUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapService extends Service {
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -99,13 +99,13 @@ public class MapService extends Service {
         }).start();
     }
 
-    public static void addBottle(String title,String describe,String author){
+    public static void addBottle(String title, String describe, String author, Context context){
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "INSERT into user values('null',"+Longitude+","+Latitude+",'"+title+"','"
+            String sql = "INSERT into point values(null,"+Latitude+","+Longitude+",'"+title+"','"
                     +Address+"','"+describe+"','Bottle','"+author+"')";
+            GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
-            ResultSet resultSet;
             try {
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();
@@ -113,6 +113,25 @@ public class MapService extends Service {
                 GlobalMemory.PrintLog(TAG+e.getMessage());
                 GlobalMemory.PrintLog(TAG+sql);
             }
+            UiUtil.ShowToast(context,"添加成功");
         }).start();
     }
+    public static void addBoard(String title, String describe, String author, Context context) {
+        new Thread(() -> {
+            Connection connection = JDBCUtil.Connection();
+            String sql = "INSERT into point values(null,"+Latitude+","+Longitude+",'"+title+"','"
+                    +Address+"','"+describe+"','Board','"+author+"')";
+            GlobalMemory.PrintLog(TAG+sql);
+            PreparedStatement preparedStatement;
+            try {
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.executeUpdate();
+            }catch (Exception e){
+                GlobalMemory.PrintLog(TAG+e.getMessage());
+                GlobalMemory.PrintLog(TAG+sql);
+            }
+            UiUtil.ShowToast(context,"添加成功");
+        }).start();
+    }
+
 }

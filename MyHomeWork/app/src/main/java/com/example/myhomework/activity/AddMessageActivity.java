@@ -1,6 +1,7 @@
 package com.example.myhomework.activity;
 
 
+import static com.example.myhomework.global.GlobalMemory.NickName;
 import static com.example.myhomework.utils.UiUtil.ShowToast;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.example.myhomework.BottleApplication;
 import com.example.myhomework.databinding.ActivityAddMessageBinding;
 import com.example.myhomework.fragment.MapFragment;
+import com.example.myhomework.service.MapService;
 import com.example.myhomework.utils.MapUtil;
 import com.example.myhomework.utils.UiUtil;
 
@@ -38,10 +40,17 @@ public class AddMessageActivity extends AppCompatActivity {
             String title = binding.title.getText().toString();
             String address;
             String describe = binding.describe.getText().toString();
+            String author = NickName;
 
             if(TextUtils.isEmpty(title)||TextUtils.isEmpty(describe)){
                 ShowToast(this,"内容不能为空噢");
+                return;
             }
+
+            if(binding.switchAnon.isChecked())
+                author = "匿名";
+            MapService.addBoard(title, describe, author, this);
+            finish();
         });
     }
 }

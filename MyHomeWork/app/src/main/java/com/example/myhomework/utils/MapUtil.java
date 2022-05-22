@@ -94,7 +94,7 @@ public class MapUtil {
 
         mBaiduMap.setMyLocationConfiguration(new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true,
                 BitmapDescriptorFactory.fromResource(R.drawable.arrow),
-                0xAAFFFF88, 0xAA00FF00));
+                0x3FFFFF88, 0x3F00FF00));
     }
 
     /**
