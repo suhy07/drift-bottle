@@ -38,11 +38,12 @@ public class MessageService extends Service {
     public static void showBoard(int id, Activity activity, TextView title, BaiduMap baiduMap, MessageAdapter adapter){
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "SELECT * from point where id =" + id;
+            String sql = "SELECT * from point where id =?";
             PreparedStatement preparedStatement;
             ResultSet resultSet;
             try {
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,id);
                 resultSet = preparedStatement.executeQuery();
                 resultSet.next();
                 activity.runOnUiThread(()->{
@@ -65,8 +66,9 @@ public class MessageService extends Service {
                         UiUtil.ShowToast(activity,e.getMessage());
                     }
                 });
-                sql = "SELECT * from message where board =" + id;
+                sql = "SELECT * from message where board =?";
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,id);
                 ResultSet resultSet1 = preparedStatement.executeQuery();
                 MessageActivity.messageList.clear();
                 while (resultSet1.next()){
@@ -89,12 +91,14 @@ public class MessageService extends Service {
     public static void addMessage(String message, String author, int board, Activity activity) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "INSERT into message values(null,'"+message+"','"
-                    +author+"',"+board+")";
+            String sql = "INSERT into message values(null,?,?,?)";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             try {
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1,message);
+                preparedStatement.setString(2,author);
+                preparedStatement.setInt(3,board);
                 preparedStatement.executeUpdate();
             }catch (Exception e){
                 GlobalMemory.PrintLog(TAG+e.getMessage());
@@ -108,16 +112,18 @@ public class MessageService extends Service {
     public static void showMessage(int id, Activity activity, TextView title, BaiduMap baiduMap, EditText describe){
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "SELECT * from message where id =" + id;
+            String sql = "SELECT * from message where id =?";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement,mapPre;
             ResultSet resultSet, mapResultSet;
             try {
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,id);
                 resultSet = preparedStatement.executeQuery();
                 resultSet.next();
-                String mapSql = "SELECT * from point where id =" + resultSet.getInt("board");
+                String mapSql = "SELECT * from point where id = ?";
                 mapPre = connection.prepareStatement(mapSql);
+                mapPre.setInt(1,resultSet.getInt("board"));
                 mapResultSet = mapPre.executeQuery();
                 mapResultSet.next();
                 activity.runOnUiThread(()->{

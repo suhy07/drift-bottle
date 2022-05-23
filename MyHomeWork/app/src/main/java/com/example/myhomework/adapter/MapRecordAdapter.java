@@ -53,6 +53,10 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         return new ViewHolder(view);
     }
 
+    private double toArc(double role){
+        return role*3.1415926/180.0;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setIsRecyclable(false);
@@ -65,8 +69,9 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
             itemMaprecordBinding.imageView.setImageResource(R.drawable.bottle);
         }
         double d,R = 6371;
-        d=R*Math.acos(Math.cos(Longitude) * Math.cos(mapRecord.getY())*Math.cos(Latitude - mapRecord.getX())
-                +Math.sin(Longitude) * Math.sin(mapRecord.getY()));
+
+        d=R*Math.acos(Math.cos(toArc(Longitude)) * Math.cos(toArc(mapRecord.getY()))*Math.cos(toArc(Latitude) - toArc(mapRecord.getX()))
+                +Math.sin(toArc(Longitude)) * Math.sin(toArc(mapRecord.getY())));
         String str;
         if(d > 1){
             str = String.format("%.2f",d);
@@ -89,8 +94,6 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
                     intent.putExtra("board_id", mapRecord.getId());
                     activity.startActivity(intent);
                 }
-
-
 
             }else {
                 UiUtil.ShowToast(activity, "当前距离过远，请靠近地点再拾取");

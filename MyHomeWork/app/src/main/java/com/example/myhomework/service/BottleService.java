@@ -35,12 +35,13 @@ public class BottleService extends Service {
     public static void showBottle(int id, Activity activity, TextView title, BaiduMap baiduMap, EditText describe){
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "SELECT * from point where id =" + id;
+            String sql = "SELECT * from point where id = ?";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             ResultSet resultSet;
             try {
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,id);
                 resultSet = preparedStatement.executeQuery();
                 resultSet.next();
                 activity.runOnUiThread(()->{

@@ -1,7 +1,6 @@
 package com.example.myhomework.fragment;
 
-import static com.example.myhomework.global.GlobalMemory.Latitude;
-import static com.example.myhomework.global.GlobalMemory.Longitude;
+
 import static com.example.myhomework.global.GlobalMemory.MapRecordList;
 
 import android.content.IntentFilter;
@@ -78,12 +77,6 @@ public class MapFragment extends Fragment {
         MapUtil.initLocationOption(getActivity(),binding.map);
         initRecycleView();
         initPoint();
-        /**动态注册广播*/
-        IntentFilter iFilter = new IntentFilter();
-        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
-        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK);
-        SDKReceiver mReceiver = new SDKReceiver();
-        getActivity().registerReceiver(mReceiver, iFilter);
 
         return binding.getRoot();
     }

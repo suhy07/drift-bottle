@@ -24,7 +24,7 @@ public class GlobalMemory {
     public static String Address = "未知地点";
     public static List<String> PoiNameList = new ArrayList<>();
     public static List<Poi> PoiList = new ArrayList<>();
-    public static double Limit = 500;
+    public static double Limit = 300;
     public static void PrintLog(String msg){
         Log.d(TAG,msg);
     }

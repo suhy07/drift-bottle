@@ -31,6 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,10 +40,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="35dp"
-            android:layout_gravity="center"
             app:cardCornerRadius="15dp">
             <TextView
                 android:id="@+id/title"
@@ -61,7 +62,6 @@
             android:layout_width="110dp"
             android:layout_height="45dp"
             android:layout_gravity="left"
-            android:layout_marginStart="35dp"
             android:layout_marginTop="25dp"
             app:cardCornerRadius="15dp">
 
@@ -79,16 +79,15 @@
         <com.baidu.mapapi.map.MapView
             android:id="@+id/map"
             android:layout_gravity="center"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="160dp"
             android:layout_marginTop="20dp"
             />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_marginTop="25dp"
-            android:layout_gravity="center"
             app:cardCornerRadius="15dp">
             <EditText
                 android:id="@+id/describe"
@@ -108,10 +107,9 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="45dp"
-            android:layout_marginLeft="40dp"
             app:cardCornerRadius="20dp">
             <Button
                 android:id="@+id/finish"

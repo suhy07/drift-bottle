@@ -32,15 +32,17 @@ public class UserService extends Service {
     public static void Login(String id, String password, AppCompatActivity activity) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql="SELECT * from user where uid='"+id+"' and password='"+password+"'";
+            String sql="SELECT * from user where uid = ? and password = ?";
             PreparedStatement preparedStatement;
             ResultSet resultSet;
             try {
                 preparedStatement=connection.prepareStatement(sql);
+                preparedStatement.setString(1,id);
+                preparedStatement.setString(2,password);
                 resultSet=preparedStatement.executeQuery();
                 if(resultSet.next()){
                     GlobalMemory.NickName = resultSet.getString("nickname");
-                    GlobalMemory.UserId = resultSet.getString("uid");
+                    UserId = resultSet.getString("uid");
                     activity.startActivity(new Intent(activity, MainActivity.class));
                     GlobalMemory.PrintLog(TAG+"登陆成功");
                     activity.finish();
@@ -58,18 +60,22 @@ public class UserService extends Service {
     public static void Register(String id, String password, String nickname, AppCompatActivity activity) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql="SELECT * from user where uid='"+id+"'";
+            String sql="SELECT * from user where uid=?";
             PreparedStatement preparedStatement;
             ResultSet resultSet;
             try {
                 preparedStatement=connection.prepareStatement(sql);
+                preparedStatement.setString(1,id);
                 resultSet=preparedStatement.executeQuery();
                 if(resultSet.next()){
                     activity.runOnUiThread(()->   Toast.makeText(activity,"邮箱已被注册",Toast.LENGTH_LONG).show());
                     GlobalMemory.PrintLog(TAG+"邮箱已被注册");
                 }else{
-                    sql = "INSERT into user values('"+id+"','"+password+"','"+nickname+"')";
+                    sql = "INSERT into user values(?,?,?)";
                     preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1,id);
+                    preparedStatement.setString(2,password);
+                    preparedStatement.setString(3,nickname);
                     preparedStatement.executeUpdate();
                     activity.startActivity(new Intent(activity, LoginActivity.class));
                     activity.runOnUiThread(()->   Toast.makeText(activity,"注册成功",Toast.LENGTH_LONG).show());
@@ -86,10 +92,13 @@ public class UserService extends Service {
     public static void ChangePassWord(String nickname, String password, Activity activity){
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql="UPDATE user set nickname='"+nickname+"', password = '"+password +"' where uid ='"+UserId+"'";
+            String sql="UPDATE user set nickname = ?, password = ? where uid = ?";
             PreparedStatement preparedStatement;
             try {
                 preparedStatement=connection.prepareStatement(sql);
+                preparedStatement.setString(1,nickname);
+                preparedStatement.setString(2,password);
+                preparedStatement.setString(3,UserId);
                 preparedStatement.executeUpdate();
                 UiUtil.ShowToast(activity,"修改成功");
                 Intent intent=new Intent(activity, MainActivity.class);

@@ -86,12 +86,17 @@ public class MapService extends Service {
     public static void addBottle(double x, double y, String title, String address, String describe, String author, Activity context) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "INSERT into point values(null,"+x+","+y+",'"+title+"','"
-                    +address+"','"+describe+"','Bottle','"+author+"')";
+            String sql = "INSERT into point values(null,?,?,?,?,?,'Bottle',?)";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             try {
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setDouble(1,x);
+                preparedStatement.setDouble(2,y);
+                preparedStatement.setString(3,title);
+                preparedStatement.setString(4,address);
+                preparedStatement.setString(5,describe);
+                preparedStatement.setString(6,author);
                 preparedStatement.executeUpdate();
             }catch (Exception e){
                 GlobalMemory.PrintLog(TAG+e.getMessage());
@@ -105,12 +110,17 @@ public class MapService extends Service {
     public static void addBoard(double x, double y, String title, String address, String describe, String author, Activity context) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
-            String sql = "INSERT into point values(null,"+x+","+y+",'"+title+"','"
-                    +address+"','"+describe+"','Board','"+author+"')";
+            String sql = "INSERT into point values(null,?,?,?,?,?,'Board',?)";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             try {
                 preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setDouble(1,x);
+                preparedStatement.setDouble(2,y);
+                preparedStatement.setString(3,title);
+                preparedStatement.setString(4,address);
+                preparedStatement.setString(5,describe);
+                preparedStatement.setString(6,author);
                 preparedStatement.executeUpdate();
             }catch (Exception e){
                 GlobalMemory.PrintLog(TAG+e.getMessage());
