@@ -89,7 +89,7 @@ public class MapFragment extends Fragment {
     }
 
     private void initRecycleView() {
-        mapRecordAdapter = new MapRecordAdapter(MapRecordList);
+        mapRecordAdapter = new MapRecordAdapter(MapRecordList,getActivity());
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(mapRecordAdapter);
     }

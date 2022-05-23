@@ -5,6 +5,17 @@
     android:background="@color/fragment_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="650dp"
+        android:elevation="0dp"
+        android:src="@drawable/mailbox_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar" />
+
     <com.example.myhomework.view.TopBar
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -17,6 +28,7 @@
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -28,18 +40,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
             android:layout_height="45dp"
-            android:layout_marginTop="75dp"
             android:layout_gravity="center"
+            android:layout_marginTop="75dp"
             app:cardCornerRadius="15dp">
+
             <EditText
                 android:id="@+id/title"
-                android:layout_marginStart="10dp"
-                android:textSize="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
                 android:background="#00FFFFFF"
+                android:hint="请输入标题"
                 android:textColor="@color/label_text"
-                android:hint="请输入标题" />
+                android:textSize="15sp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -54,8 +67,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
                 android:text="投放内容"
                 android:textColor="@color/label_text"
                 android:textSize="15sp" />
@@ -64,11 +77,10 @@
 
         <com.baidu.mapapi.map.MapView
             android:id="@+id/map"
-            android:layout_gravity="center"
             android:layout_width="340dp"
             android:layout_height="160dp"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
@@ -76,6 +88,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             app:cardCornerRadius="15dp">
+
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
@@ -86,45 +99,49 @@
 
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="110dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="15dp"
                 app:cardCornerRadius="15dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
+                    android:text="留言板描述"
                     android:textColor="@color/label_text"
-                    android:text="留言板描述" />
+                    android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
+
             <LinearLayout
-                android:layout_marginEnd="35dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:orientation="vertical">
+
                 <Switch
                     android:id="@+id/switchAnon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginTop="15dp"
-                    />
+                    android:layout_marginTop="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
                     android:layout_gravity="end"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
+                    android:text="匿名"
                     android:textColor="@color/label_text"
-                    android:text="匿名" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -132,32 +149,34 @@
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
             android:layout_height="140dp"
-            android:layout_marginTop="15dp"
             android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             app:cardCornerRadius="15dp">
+
             <EditText
                 android:id="@+id/describe"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="#00FFFFFF"
                 android:enabled="true"
                 android:inputType="textMultiLine"
-                android:minLines="8"
                 android:maxLines="10"
+                android:minLines="8"
                 android:scrollbars="vertical"
-                android:background="#00FFFFFF"
                 android:textColor="@color/label_text" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
             android:layout_height="50dp"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
             app:cardCornerRadius="20dp">
+
             <Button
                 android:id="@+id/finish"
                 android:layout_width="match_parent"

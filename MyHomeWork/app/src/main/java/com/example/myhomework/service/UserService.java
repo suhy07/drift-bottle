@@ -1,7 +1,9 @@
 package com.example.myhomework.service;
 
 import static com.example.myhomework.global.GlobalMemory.TAG;
+import static com.example.myhomework.global.GlobalMemory.UserId;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -14,6 +16,7 @@ import com.example.myhomework.activity.LoginActivity;
 import com.example.myhomework.activity.MainActivity;
 import com.example.myhomework.global.GlobalMemory;
 import com.example.myhomework.utils.JDBCUtil;
+import com.example.myhomework.utils.UiUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +40,7 @@ public class UserService extends Service {
                 resultSet=preparedStatement.executeQuery();
                 if(resultSet.next()){
                     GlobalMemory.NickName = resultSet.getString("nickname");
+                    GlobalMemory.UserId = resultSet.getString("uid");
                     activity.startActivity(new Intent(activity, MainActivity.class));
                     GlobalMemory.PrintLog(TAG+"登陆成功");
                     activity.finish();
@@ -75,6 +79,26 @@ public class UserService extends Service {
                 GlobalMemory.PrintLog(TAG+e.getMessage());
                 GlobalMemory.PrintLog(TAG+sql);
                 activity.runOnUiThread(()->   Toast.makeText(activity,e.getMessage(),Toast.LENGTH_LONG).show());
+            }
+        }).start();
+    }
+
+    public static void ChangePassWord(String nickname, String password, Activity activity){
+        new Thread(() -> {
+            Connection connection = JDBCUtil.Connection();
+            String sql="UPDATE user set nickname='"+nickname+"', password = '"+password +"' where uid ='"+UserId+"'";
+            PreparedStatement preparedStatement;
+            try {
+                preparedStatement=connection.prepareStatement(sql);
+                preparedStatement.executeUpdate();
+                UiUtil.ShowToast(activity,"修改成功");
+                Intent intent=new Intent(activity, MainActivity.class);
+                activity.startActivity(intent);
+                activity.finish();
+            }catch (Exception e){
+                GlobalMemory.PrintLog(TAG+e.getMessage());
+                GlobalMemory.PrintLog(TAG+sql);
+                UiUtil.ShowToast(activity,e.getMessage());
             }
         }).start();
     }

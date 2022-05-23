@@ -195,11 +195,12 @@
             android:layout_marginBottom="0dp">
 
             <Button
+                android:id="@+id/change_password"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="12sp"
                 android:background="?android:selectableItemBackground"
-                android:text="修改密码"
+                android:text="修改信息"
                 android:textAlignment="textStart" />
             <View
                 android:layout_width="match_parent"
@@ -208,6 +209,7 @@
                 android:background="#BBBBBB"/>
 
             <Button
+                android:id="@+id/exit"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="12sp"

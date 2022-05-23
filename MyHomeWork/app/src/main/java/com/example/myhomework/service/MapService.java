@@ -59,6 +59,7 @@ public class MapService extends Service {
                             resultSet.getDouble("x"),
                             resultSet.getDouble("y")
                     );
+                    mapRecord.setId(resultSet.getInt("id"));
                     mapRecords.add(mapRecord);
                     //定义Maker坐标点
                     LatLng point = new LatLng(mapRecord.getX(), mapRecord.getY());
@@ -104,7 +105,7 @@ public class MapService extends Service {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
             String sql = "INSERT into point values(null,"+x+","+y+",'"+title+"','"
-                    +address+"','"+describe+"','Board','"+author+"')";
+                    +address+"','"+describe+"','Bottle','"+author+"')";
             GlobalMemory.PrintLog(TAG+sql);
             PreparedStatement preparedStatement;
             try {

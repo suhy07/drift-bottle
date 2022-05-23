@@ -1,8 +1,10 @@
 package com.example.myhomework.adapter;
 
 import static com.example.myhomework.global.GlobalMemory.Latitude;
+import static com.example.myhomework.global.GlobalMemory.Limit;
 import static com.example.myhomework.global.GlobalMemory.Longitude;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myhomework.R;
+import com.example.myhomework.activity.MainActivity;
 import com.example.myhomework.bean.MapRecord;
 import com.example.myhomework.databinding.ItemMaprecordBinding;
+import com.example.myhomework.utils.UiUtil;
 
 import java.util.List;
 
 public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.ViewHolder>{
     private List<MapRecord> mapRecordList;
     ItemMaprecordBinding itemMaprecordBinding;
+    Activity activity;
     class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -27,8 +32,9 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         }
     }
 
-    public MapRecordAdapter(List<MapRecord> mapRecordList) {
+    public MapRecordAdapter(List<MapRecord> mapRecordList, Activity activity) {
         this.mapRecordList = mapRecordList;
+        this.activity = activity;
     }
 
     @NonNull
@@ -52,11 +58,22 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         double d,R = 6371;
         d=R*Math.acos(Math.cos(Longitude) * Math.cos(mapRecord.getY())*Math.cos(Latitude - mapRecord.getX())
                 +Math.sin(Longitude) * Math.sin(mapRecord.getY()));
+        String str;
         if(d > 1){
-            itemMaprecordBinding.distance.setText((String)(d+"").substring(0,8)+"km");
+            str = String.format("%.2f",d);
+            itemMaprecordBinding.distance.setText(str+"km");
         }else{
-            itemMaprecordBinding.distance.setText((String)(d+"").substring(0,8)+"m");
+            str = String.format("%.2f",d*1000);
+            itemMaprecordBinding.distance.setText(str+"m");
         }
+        itemMaprecordBinding.getRoot().setOnClickListener(v -> {
+            if( d * 1000 < Limit){
+                UiUtil.ShowToast(activity,"");
+            }else {
+                UiUtil.ShowToast(activity, "当前距离过远，请靠近地点再拾取");
+            }
+
+        });
     }
     @Override
     public int getItemCount(){

@@ -1,7 +1,6 @@
 package com.example.myhomework.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -19,7 +18,8 @@ public class UiUtil {
             actionBar.hide();
         }
     }
-    public static void ShowToast(Context context, String msg){
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    public static void ShowToast(Activity activity, String msg){
+        activity.runOnUiThread(()->Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show());
+
     }
 }

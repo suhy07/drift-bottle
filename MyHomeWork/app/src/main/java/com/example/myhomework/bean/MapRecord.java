@@ -16,8 +16,18 @@ public class MapRecord {
             return this.name;
         }
     }
+    private Integer id;
     private RecordType recordType;
     private String address;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     private double x;
     private double y;
 
