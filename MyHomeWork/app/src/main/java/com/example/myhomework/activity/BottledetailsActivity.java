@@ -40,4 +40,22 @@ public class BottledetailsActivity extends AppCompatActivity {
         });
         BottleService.showBottle(id,this,binding.title,baiduMap,binding.describe);
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        binding.map.onResume();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        binding.map.onPause();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        binding.map.onDestroy();
+    }
+
 }

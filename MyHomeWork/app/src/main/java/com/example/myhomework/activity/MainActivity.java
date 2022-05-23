@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNav, navController);
 
-        /**动态注册广播*/
-        IntentFilter iFilter = new IntentFilter();
-        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
-        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK);
-        SDKReceiver mReceiver = new SDKReceiver();
-        registerReceiver(mReceiver, iFilter);
+//        /**动态注册广播*/
+//        IntentFilter iFilter = new IntentFilter();
+//        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
+//        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK);
+//        SDKReceiver mReceiver = new SDKReceiver();
+//        registerReceiver(mReceiver, iFilter);
 
         viewList.add(binding.bubble);
         viewList.add(binding.view);

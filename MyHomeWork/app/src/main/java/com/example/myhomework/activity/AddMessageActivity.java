@@ -61,6 +61,23 @@ public class AddMessageActivity extends AppCompatActivity {
         });
         initSpinner();
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        binding.map.onResume();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        binding.map.onPause();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        binding.map.onDestroy();
+    }
 
     private void initSpinner(){
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, R.layout.item_select, PoiNameList);
