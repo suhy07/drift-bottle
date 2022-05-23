@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:text="投放内容"
+                android:text="投放地点"
                 android:textColor="@color/label_text"
                 android:textSize="15sp" />
 
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:text="留言板描述"
+                    android:text="投放内容"
                     android:textColor="@color/label_text"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
