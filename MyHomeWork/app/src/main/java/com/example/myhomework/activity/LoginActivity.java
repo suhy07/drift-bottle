@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.login.setOnClickListener(v -> {
             loginCheck(binding.id,binding.password);
+            UiUtil.onClickAnimator(this,binding.login);
         });
         binding.register.setOnClickListener(v -> {
             Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);

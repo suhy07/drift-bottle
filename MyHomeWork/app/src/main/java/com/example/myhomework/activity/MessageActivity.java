@@ -38,19 +38,20 @@ public class MessageActivity extends AppCompatActivity {
 
         int id = getIntent().getIntExtra("board_id",-1);
         if(id == -1){
-            Intent intent=new Intent(MessageActivity.this, MapFragment.class);
+            Intent intent=new Intent(MessageActivity.this, MainActivity.class);
             UiUtil.ShowToast(this,"数据异常，请稍后再试");
             startActivity(intent);
             finish();
         }
         binding.topBar.setTopBarClickListener(() -> {
-            Intent intent=new Intent(MessageActivity.this, MapFragment.class);
+            Intent intent=new Intent(MessageActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
         MessageService.showBoard(id,this,binding.title,binding.map.getMap(),messageAdapter);
 
         binding.finish.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(this,binding.finish);
             String message = binding.message.getText().toString();
             String author = GlobalMemory.NickName;
             if(binding.switchAnon.isChecked()){

@@ -29,6 +29,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             finish();
         });
         binding.finish.setOnClickListener(v->{
+            UiUtil.onClickAnimator(this,binding.finish);
             String nickname = binding.nickname.getText().toString();
             String password1 = binding.password.getText().toString();
             String password2 = binding.passwordQuery.getText().toString();

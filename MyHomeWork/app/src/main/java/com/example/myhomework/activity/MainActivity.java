@@ -21,6 +21,7 @@ import com.example.myhomework.fragment.MapFragment;
 import com.example.myhomework.service.SDKReceiver;
 import com.example.myhomework.utils.PermissionsUtil;
 import com.example.myhomework.databinding.ActivityMainBinding;
+import com.example.myhomework.utils.UiUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         PermissionsUtil.verifyStoragePermissions(this);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNav, navController);
 
 //        /**动态注册广播*/
@@ -63,15 +63,35 @@ public class MainActivity extends AppCompatActivity {
             v.setAlpha(0);
             v.setVisibility(View.INVISIBLE);
         }
+        binding.bottomNav.setOnClickListener( v ->{
+            if (visible){
+                visible = !visible;
+                for(View v1 : viewList){
+                    v1.animate().translationY(0).alpha(0).setDuration(200).start();
+                    new Thread(()->{
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        v1.setVisibility(View.INVISIBLE);
+                    });
+
+                }
+            }
+        });
         binding.bottleBtn.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(this,binding.bottleBtn);
             Intent intent=new Intent(MainActivity.this, AddBottleActivity.class);
             startActivity(intent);
         });
         binding.boardBtn.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(this,binding.boardBtn);
             Intent intent=new Intent(MainActivity.this, AddMessageActivity.class);
             startActivity(intent);
         });
         binding.btnAdd.setOnClickListener(v->{
+            UiUtil.onClickAnimator(this,binding.btnAdd);
             visible = !visible;
             if (visible){
                 for(View v1 : viewList){

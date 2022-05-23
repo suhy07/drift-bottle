@@ -14,6 +14,7 @@ import com.example.myhomework.activity.DraftActivity;
 import com.example.myhomework.activity.LoginActivity;
 import com.example.myhomework.databinding.FragmentMineBinding;
 import com.example.myhomework.global.GlobalMemory;
+import com.example.myhomework.utils.UiUtil;
 
 
 public class MineFragment extends Fragment {
@@ -36,6 +37,18 @@ public class MineFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentMineBinding.inflate(getLayoutInflater());
         binding.userName.setText(GlobalMemory.NickName);
+        binding.draft.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(getActivity(),binding.draft);
+            UiUtil.ShowToast(getActivity(),"功能暂未开放，敬请期待");
+        });
+        binding.bottle.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(getActivity(),binding.bottle);
+            UiUtil.ShowToast(getActivity(),"功能暂未开放，敬请期待");
+        });
+        binding.board.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(getActivity(),binding.board);
+            UiUtil.ShowToast(getActivity(),"功能暂未开放，敬请期待");
+        });
         binding.changePassword.setOnClickListener(v -> {
             Intent intent=new Intent(getActivity(), ChangePasswordActivity.class);
             startActivity(intent);

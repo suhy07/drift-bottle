@@ -39,6 +39,10 @@ public class BottledetailsActivity extends AppCompatActivity {
             finish();
         });
         BottleService.showBottle(id,this,binding.title,baiduMap,binding.describe);
+        binding.finish.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(this,v);
+            UiUtil.ShowToast(this,"功能暂未开放，敬请期待");
+        });
     }
     @Override
     public void onResume(){

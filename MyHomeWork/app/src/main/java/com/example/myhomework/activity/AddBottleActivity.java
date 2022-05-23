@@ -42,6 +42,7 @@ public class AddBottleActivity extends AppCompatActivity {
         baiduMap = binding.map.getMap();
         MapUtil.initLocationOption(this, binding.map);
         binding.finish.setOnClickListener(v -> {
+            UiUtil.onClickAnimator(this,binding.finish);
             double x = Latitude;
             double y = Longitude;
             String title = binding.title.getText().toString();

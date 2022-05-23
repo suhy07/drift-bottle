@@ -75,7 +75,7 @@
             android:id="@+id/btn_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:selectableItemBackground"
+            android:background="@color/transparent"
             android:scaleType="fitXY"
             app:borderWidth="0dp"
             app:srcCompat="@drawable/add_btn" />

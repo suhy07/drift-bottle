@@ -1,6 +1,7 @@
 package com.example.myhomework.utils;
 
 import android.app.Activity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -20,6 +21,19 @@ public class UiUtil {
     }
     public static void ShowToast(Activity activity, String msg){
         activity.runOnUiThread(()->Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show());
+    }
 
+    public static void onClickAnimator(Activity activity,View view){
+        view.animate().alpha(0.5f).setDuration(200).setStartDelay(0).start();
+        new Thread(()->{
+            try {
+                Thread.sleep(200);
+                activity.runOnUiThread(()->{
+                    view.animate().alpha(1).setDuration(200).setStartDelay(0).start();
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }

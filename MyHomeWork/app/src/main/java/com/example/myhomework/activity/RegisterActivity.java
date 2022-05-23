@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.myhomework.R;
 import com.example.myhomework.databinding.ActivityRegisterBinding;
 import com.example.myhomework.service.UserService;
+import com.example.myhomework.utils.UiUtil;
 
 public class RegisterActivity extends AppCompatActivity {
     ActivityRegisterBinding binding;
@@ -25,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         binding.gif.setMovieResource(R.drawable.there_is_a_bee);
         binding.finish.setOnClickListener(v -> {
            register(binding.id,binding.nickname,binding.password,binding.passwordQuery);
-
+           UiUtil.onClickAnimator(this,binding.finish);
         });
     }
     private void register(EditText UID,EditText UserID1,EditText UserPassWord1,EditText UserPassWord2) {

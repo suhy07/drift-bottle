@@ -73,7 +73,7 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimaryVariant"
+                android:background="@drawable/btn_background"
                 android:text="登   陆"
                 android:textStyle="bold"
                 android:textColor="@color/white"
