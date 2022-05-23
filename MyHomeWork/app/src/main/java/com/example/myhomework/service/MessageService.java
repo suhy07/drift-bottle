@@ -35,7 +35,7 @@ public class MessageService extends Service {
         return null;
     }
 
-    public static void showMessage(int id, Activity activity, TextView title, BaiduMap baiduMap, MessageAdapter adapter){
+    public static void showBoard(int id, Activity activity, TextView title, BaiduMap baiduMap, MessageAdapter adapter){
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
             String sql = "SELECT * from point where id =" + id;
@@ -58,7 +58,7 @@ public class MessageService extends Service {
                         MapStatusUpdate status1 = MapStatusUpdateFactory.newLatLng(latLng);
                         baiduMap.setMapStatus(status1);
                         MapService.addPoint(baiduMap,mapRecord);
-                        title.setText(titleStr);
+                        title.setText("'"+address+"'的留言板---"+titleStr);
 
                     } catch (SQLException e) {
                         GlobalMemory.PrintLog(TAG+e.getMessage());
@@ -102,6 +102,54 @@ public class MessageService extends Service {
             }
             UiUtil.ShowToast(activity,"添加留言成功");
             activity.finish();
+        }).start();
+    }
+
+    public static void showMessage(int id, Activity activity, TextView title, BaiduMap baiduMap, EditText describe){
+        new Thread(() -> {
+            Connection connection = JDBCUtil.Connection();
+            String sql = "SELECT * from message where id =" + id;
+            GlobalMemory.PrintLog(TAG+sql);
+            PreparedStatement preparedStatement,mapPre;
+            ResultSet resultSet, mapResultSet;
+            try {
+                preparedStatement = connection.prepareStatement(sql);
+                resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                String mapSql = "SELECT * from point where id =" + resultSet.getInt("board");
+                mapPre = connection.prepareStatement(mapSql);
+                mapResultSet = mapPre.executeQuery();
+                mapResultSet.next();
+                activity.runOnUiThread(()->{
+                    try {
+                        String message = resultSet.getString("message");
+
+                        double x = mapResultSet.getDouble("x");
+                        double y = mapResultSet.getDouble("y");
+                        String type = mapResultSet.getString("type");
+                        String address = mapResultSet.getString("address");
+                        String titleStr = mapResultSet.getString("title");
+                        String describeStr = mapResultSet.getString("describe");
+
+                        MapRecord mapRecord = new MapRecord(type,address,x,y);
+                        LatLng latLng = new LatLng(mapRecord.getX(), mapRecord.getY());
+                        MapStatusUpdate status1 = MapStatusUpdateFactory.newLatLng(latLng);
+                        baiduMap.setMapStatus(status1);
+                        MapService.addPoint(baiduMap,mapRecord);
+
+                        title.setText("'"+address+"'的留言板---"+titleStr);
+                        describe.setText(message);
+
+                    } catch (SQLException e) {
+                        GlobalMemory.PrintLog(TAG+e.getMessage());
+                        GlobalMemory.PrintLog(TAG+sql);
+                        UiUtil.ShowToast(activity,e.getMessage());
+                    }
+                });
+            }catch (Exception e){
+                GlobalMemory.PrintLog(TAG+e.getMessage());
+                GlobalMemory.PrintLog(TAG+sql);
+            }
         }).start();
     }
 }

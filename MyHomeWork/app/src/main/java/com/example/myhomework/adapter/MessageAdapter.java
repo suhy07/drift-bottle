@@ -44,12 +44,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setIsRecyclable(false);
-        Message message = messages.get(position);
-        itemMessageBinding.message.setText(message.getMessage());
-        itemMessageBinding.author.setText(message.getAuthor());
+        Message _message = messages.get(position);
+        switch (position % 5){
+            case 0:itemMessageBinding.linearLayout.setBackgroundResource(R.drawable.message_background);break;
+            case 1:itemMessageBinding.linearLayout.setBackgroundResource(R.drawable.message_background1);break;
+            case 2:itemMessageBinding.linearLayout.setBackgroundResource(R.drawable.message_background2);break;
+            case 3:itemMessageBinding.linearLayout.setBackgroundResource(R.drawable.message_background3);break;
+            case 4:itemMessageBinding.linearLayout.setBackgroundResource(R.drawable.message_background4);break;
+        }
+        itemMessageBinding.message.setText(_message.getMessage());
+        itemMessageBinding.author.setText(_message.getAuthor());
         itemMessageBinding.getRoot().setOnClickListener(v->{
              Intent intent = new Intent(activity, MessagedetailsActivity.class);
-             intent.putExtra("message_id",message.getId());
+             intent.putExtra("message_id",_message.getId());
              activity.startActivity(intent);
            }
         );

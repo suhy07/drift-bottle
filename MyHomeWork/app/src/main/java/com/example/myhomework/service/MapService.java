@@ -121,8 +121,6 @@ public class MapService extends Service {
         }).start();
     }
 
-
-
     public static void addPoint(BaiduMap baiduMap,MapRecord mapRecord){
         //定义Maker坐标点
         LatLng point = new LatLng(mapRecord.getX(), mapRecord.getY());

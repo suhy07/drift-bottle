@@ -48,7 +48,7 @@ public class MessageActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-        MessageService.showMessage(id,this,binding.title,binding.map.getMap(),messageAdapter);
+        MessageService.showBoard(id,this,binding.title,binding.map.getMap(),messageAdapter);
 
         binding.finish.setOnClickListener(v -> {
             String message = binding.message.getText().toString();

@@ -40,7 +40,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
             android:layout_height="45dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             app:cardCornerRadius="15dp">
             <TextView
@@ -62,7 +62,7 @@
             android:layout_height="45dp"
             android:layout_gravity="left"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="15dp">
 
             <TextView
@@ -80,19 +80,17 @@
             android:id="@+id/map"
             android:layout_gravity="center"
             android:layout_width="340dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="340dp"
-            android:layout_height="140dp"
+            android:layout_height="190dp"
             android:layout_marginTop="25dp"
             android:layout_gravity="center"
-            app:cardCornerRadius="15dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            app:cardCornerRadius="15dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
@@ -108,7 +106,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+                android:enabled="true"
                 android:inputType="textMultiLine"
                 android:minLines="8"
                 android:maxLines="10"

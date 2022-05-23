@@ -57,7 +57,7 @@ public class BottleService extends Service {
                         baiduMap.setMapStatus(status1);
                         MapService.addPoint(baiduMap,mapRecord);
 
-                        title.setText(titleStr);
+                        title.setText("'"+address+"'的漂流瓶---"+titleStr);
                         describe.setText(describeStr);
 
                     } catch (SQLException e) {
