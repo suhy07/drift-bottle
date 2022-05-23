@@ -11,6 +11,8 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
@@ -31,6 +35,7 @@ import com.example.myhomework.utils.UiUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,30 +66,7 @@ public class MapService extends Service {
                     );
                     mapRecord.setId(resultSet.getInt("id"));
                     mapRecords.add(mapRecord);
-                    //定义Maker坐标点
-                    LatLng point = new LatLng(mapRecord.getX(), mapRecord.getY());
-                    //构建Marker图标
-                    BitmapDescriptor bitmap = BitmapDescriptorFactory
-                            .fromResource(R.drawable.bottle);;
-                    switch (mapRecord.getRecordType()){
-                        case Board:
-                            bitmap= BitmapDescriptorFactory
-                                    .fromResource(R.drawable.board); break;
-                        case Bottle:
-                            bitmap= BitmapDescriptorFactory
-                                    .fromResource(R.drawable.bottle); break;
-                    }
-                    //构建MarkerOption，用于在地图上添加Marker
-                    OverlayOptions option = new MarkerOptions()
-                            .animateType(MarkerOptions.MarkerAnimateType.jump)
-                            .position(point)
-                            .icon(bitmap)
-                            .alpha(0.9f)
-                            .scaleX(0.1f)
-                            .scaleY(0.1f)
-                            .perspective(true);
-                    //在地图上添加Marker，并显示
-                    baiduMap.addOverlay(option);
+                    addPoint(baiduMap,mapRecord);
                 }
                 MapRecordList.clear();
                 for(MapRecord mapRecord: mapRecords){
@@ -119,6 +101,7 @@ public class MapService extends Service {
             context.finish();
         }).start();
     }
+
     public static void addBoard(double x, double y, String title, String address, String describe, String author, Activity context) {
         new Thread(() -> {
             Connection connection = JDBCUtil.Connection();
@@ -136,6 +119,35 @@ public class MapService extends Service {
             context.runOnUiThread(()->UiUtil.ShowToast(context,"添加成功"));
             context.finish();
         }).start();
+    }
+
+
+
+    public static void addPoint(BaiduMap baiduMap,MapRecord mapRecord){
+        //定义Maker坐标点
+        LatLng point = new LatLng(mapRecord.getX(), mapRecord.getY());
+        //构建Marker图标
+        BitmapDescriptor bitmap = BitmapDescriptorFactory
+                .fromResource(R.drawable.bottle);;
+        switch (mapRecord.getRecordType()){
+            case Board:
+                bitmap= BitmapDescriptorFactory
+                        .fromResource(R.drawable.board); break;
+            case Bottle:
+                bitmap= BitmapDescriptorFactory
+                        .fromResource(R.drawable.bottle); break;
+        }
+        //构建MarkerOption，用于在地图上添加Marker
+        OverlayOptions option = new MarkerOptions()
+                .animateType(MarkerOptions.MarkerAnimateType.jump)
+                .position(point)
+                .icon(bitmap)
+                .alpha(0.9f)
+                .scaleX(0.1f)
+                .scaleY(0.1f)
+                .perspective(true);
+        //在地图上添加Marker，并显示
+        baiduMap.addOverlay(option);
     }
 
 }

@@ -39,7 +39,7 @@ public class AddMessageActivity extends AppCompatActivity {
             finish();
         });
         baiduMap = binding.map.getMap();
-        MapUtil.initLocationOption(baiduMap,this, binding.map);
+        MapUtil.initLocationOption(this, binding.map);
         binding.finish.setOnClickListener(v -> {
             double x = Latitude;
             double y = Longitude;

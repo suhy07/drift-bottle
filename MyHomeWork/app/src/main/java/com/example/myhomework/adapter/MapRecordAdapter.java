@@ -5,6 +5,7 @@ import static com.example.myhomework.global.GlobalMemory.Limit;
 import static com.example.myhomework.global.GlobalMemory.Longitude;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.model.LatLng;
 import com.example.myhomework.R;
+import com.example.myhomework.activity.BottledetailsActivity;
 import com.example.myhomework.activity.MainActivity;
+import com.example.myhomework.activity.MessageActivity;
 import com.example.myhomework.bean.MapRecord;
 import com.example.myhomework.databinding.ItemMaprecordBinding;
 import com.example.myhomework.utils.UiUtil;
@@ -24,6 +31,7 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
     private List<MapRecord> mapRecordList;
     ItemMaprecordBinding itemMaprecordBinding;
     Activity activity;
+    BaiduMap baiduMap;
     class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -32,9 +40,10 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         }
     }
 
-    public MapRecordAdapter(List<MapRecord> mapRecordList, Activity activity) {
+    public MapRecordAdapter(List<MapRecord> mapRecordList, Activity activity, BaiduMap baiduMap) {
         this.mapRecordList = mapRecordList;
         this.activity = activity;
+        this.baiduMap = baiduMap;
     }
 
     @NonNull
@@ -68,9 +77,26 @@ public class MapRecordAdapter extends RecyclerView.Adapter<MapRecordAdapter.View
         }
         itemMaprecordBinding.getRoot().setOnClickListener(v -> {
             if( d * 1000 < Limit){
-                UiUtil.ShowToast(activity,"");
+//                LatLng latLng = new LatLng(mapRecord.getX(), mapRecord.getY());
+//                MapStatusUpdate status1 = MapStatusUpdateFactory.newLatLng(latLng);
+//                baiduMap.setMapStatus(status1);
+                if(mapRecord.getRecordType() == MapRecord.RecordType.Bottle){
+                    Intent intent = new Intent(activity, BottledetailsActivity.class);
+                    intent.putExtra("bottle_id", mapRecord.getId());
+                    activity.startActivity(intent);
+                }else{
+                    Intent intent = new Intent(activity, MessageActivity.class);
+                    intent.putExtra("board_id", mapRecord.getId());
+                    activity.startActivity(intent);
+                }
+
+
+
             }else {
                 UiUtil.ShowToast(activity, "当前距离过远，请靠近地点再拾取");
+                LatLng latLng = new LatLng(mapRecord.getX(), mapRecord.getY());
+                MapStatusUpdate status1 = MapStatusUpdateFactory.newLatLng(latLng);
+                baiduMap.setMapStatus(status1);
             }
 
         });

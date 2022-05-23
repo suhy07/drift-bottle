@@ -59,15 +59,27 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.AddMessageActivity"
             android:exported="true"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.AddBottleActivity"
             android:exported="true"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.BottledetailsActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MessageActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MessagedetailsActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

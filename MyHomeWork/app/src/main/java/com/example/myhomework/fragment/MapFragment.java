@@ -75,7 +75,7 @@ public class MapFragment extends Fragment {
         binding = FragmentMapBinding.inflate(inflater);
 
         mBaiduMap = binding.map.getMap();
-        MapUtil.initLocationOption(mBaiduMap,getActivity(),binding.map);
+        MapUtil.initLocationOption(getActivity(),binding.map);
         initRecycleView();
         initPoint();
         /**动态注册广播*/
@@ -89,7 +89,7 @@ public class MapFragment extends Fragment {
     }
 
     private void initRecycleView() {
-        mapRecordAdapter = new MapRecordAdapter(MapRecordList,getActivity());
+        mapRecordAdapter = new MapRecordAdapter(MapRecordList,getActivity(),mBaiduMap);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(mapRecordAdapter);
     }

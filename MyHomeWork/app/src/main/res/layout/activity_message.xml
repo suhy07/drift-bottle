@@ -5,7 +5,6 @@
     android:background="@color/fragment_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ImageView
         android:alpha="0.5"
         android:layout_width="match_parent"
@@ -25,14 +24,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="添加漂流瓶"
+        app:title="留言板"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,19 +40,20 @@
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
             android:layout_height="45dp"
+            android:layout_marginTop="35dp"
             android:layout_gravity="center"
-            android:layout_marginTop="75dp"
             app:cardCornerRadius="15dp">
-
-            <EditText
+            <TextView
                 android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/title_second"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
-                android:hint="请输入标题"
                 android:textColor="@color/label_text"
-                android:textSize="15sp" />
+                />
 
         </androidx.cardview.widget.CardView>
 
@@ -62,15 +62,15 @@
             android:layout_height="45dp"
             android:layout_gravity="left"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             app:cardCornerRadius="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:text="投放内容"
+                android:layout_gravity="center_vertical"
+                android:text="投放位置"
                 android:textColor="@color/label_text"
                 android:textSize="15sp" />
 
@@ -78,118 +78,93 @@
 
         <com.baidu.mapapi.map.MapView
             android:id="@+id/map"
+            android:layout_gravity="center"
             android:layout_width="340dp"
             android:layout_height="160dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="340dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp" />
+            app:cardCornerRadius="15dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="340dp"
-            android:layout_height="45dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
             app:cardCornerRadius="15dp">
-
-            <Spinner
-                android:id="@+id/spinner"
+            <EditText
+                android:id="@+id/message"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:entries="@array/addressArray"
-                android:spinnerMode="dropdown" />
+                android:enabled="false"
+                android:inputType="textMultiLine"
+                android:minLines="8"
+                android:maxLines="10"
+                android:scrollbars="vertical"
+                android:background="#00FFFFFF"
+                android:textColor="@color/label_text" />
         </androidx.cardview.widget.CardView>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="110dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="15dp"
-                app:cardCornerRadius="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"
-                    android:text="留言板描述"
-                    android:textColor="@color/label_text"
-                    android:textSize="16sp" />
-            </androidx.cardview.widget.CardView>
-
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="35dp"
+                android:gravity="start"
+                android:layout_marginStart="40dp"
                 android:orientation="vertical">
 
                 <Switch
                     android:id="@+id/switchAnon"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="15dp" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
                     android:text="匿名"
                     android:textColor="@color/label_text"
                     android:textSize="16sp" />
             </LinearLayout>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="100dp"
+                app:cardCornerRadius="20dp">
+                <Button
+                    android:id="@+id/finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryVariant"
+                    android:text="添加留言"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="15dp">
-
-            <EditText
-                android:id="@+id/describe"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="#00FFFFFF"
-                android:enabled="true"
-                android:inputType="textMultiLine"
-                android:maxLines="10"
-                android:minLines="8"
-                android:scrollbars="vertical"
-                android:textColor="@color/label_text" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="340dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="20dp">
-
-            <Button
-                android:id="@+id/finish"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimaryVariant"
-                android:text="完成"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,16 +20,19 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.example.myhomework.R;
 
 public class MapUtil {
-     public static void initLocationOption(BaiduMap mBaiduMap, Context context, View mapView) {
-        LocationClient mLocationClient;
-        MapStatus.Builder builder = new MapStatus.Builder();
-        builder.zoom(18f);
-        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+     public static void initLocationOption(Context context, MapView mapView) {
+         BaiduMap mBaiduMap = mapView.getMap();
+         LocationClient mLocationClient;
+         MapStatus.Builder builder = new MapStatus.Builder();
+         builder.zoom(18f);
+         mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 ////定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
 //        LocationClient locationClient = new LocationClient(getActivity().getApplication().getApplicationContext());
 ////声明LocationClient类实例并配置定位参数
@@ -158,10 +161,6 @@ public class MapUtil {
                 }
             }
 
-            PoiRegion poiRegion= location.getPoiRegion();
-            String poiDerectionDesc = poiRegion.getDerectionDesc();    //获取PoiRegion位置关系
-            String poiRegionName = poiRegion.getName();    //获取PoiRegion名称
-            String _poiTags = poiRegion.getTags();    //获取PoiRegion类型
 
             int errorCode = location.getLocType();
             if (location == null || view == null)
